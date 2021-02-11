@@ -2,6 +2,9 @@
 // https://www.npmjs.com/package/dotenv
 require("dotenv/config");
 
+const mongoURI = process.env.MONGO_URI;
+
+
 // ℹ️ Connects to the database
 require("./db");
 
