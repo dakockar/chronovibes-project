@@ -48,6 +48,7 @@ The app allows the user to create an account, and while logged in, record their 
 
 * POST /entries/create
   * redirects to / if user not logged in
+  * otherwise redirects to /entries
   * body:
     * title
     * description
@@ -56,6 +57,8 @@ The app allows the user to create an account, and while logged in, record their 
 
 * GET /logout
   * ends session
+
+<!-- edit, delete, search routes to be added -->
 
 
 ## Models
