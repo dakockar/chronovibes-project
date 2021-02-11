@@ -32,10 +32,3 @@ app.use("/", index);
 require("./error-handling")(app);
 
 module.exports = app;
-
-
-// damla made a change
-// another change happened!
-
-
-const x = "damla";
