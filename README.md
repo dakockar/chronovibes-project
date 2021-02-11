@@ -15,11 +15,52 @@ The app allows the user to create an account, and while logged in, record their 
 
 ## Routes
 
-(To be added)
+
+* GET /
+  * renders the index page with login/signup forms
+
+* GET /auth/signup
+  * redirects to / if user is logged in
+  * else renders signup form
+
+* POST /auth/signup
+  * redirects to / if user is logged in
+  * body:
+    * username
+    * password
+    * password confirmation
+
+* GET /auth/login
+  * redirects to / if user logged in
+  * render login form 
+
+* POST /auth/login
+  * redirects to / if user is logged in
+  * body:
+    * username
+    * password
+
+* GET /entries 
+  * renders a list of all entries
+
+* GET /entries/:id
+  * show individual entry by id
+
+* POST /entries/create
+  * redirects to / if user not logged in
+  * body:
+    * title
+    * description
+    * time
+    * visibility
+
+* GET /logout
+  * ends session
+
 
 ## Models
 
-(To be added)
+
 
 ## Links
 
