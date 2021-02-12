@@ -26,3 +26,7 @@ h1 {
   margin: 200px auto 0;
   padding: 20px;
 }
+
+.error {
+  text-align: end;
+}
