@@ -28,6 +28,7 @@ h1 {
 }
 
 /* navbarPartial */
+
 #small-logo {
   width: 40px;
   margin: 0;
@@ -44,15 +45,12 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
   border: 1px solid black;
   border-radius: 10px;
   width: 700px;
   height: 400px;
   margin: 5% auto;
-}
-
-.mood-query p {
-  align-self: center;
 }
 
 .mood-query form {
@@ -63,6 +61,7 @@ h1 {
 
 .mood-query img {
   width: 80px;
+  margin: 0 12px;
 }
 
 .mood-query button {

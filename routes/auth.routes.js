@@ -44,6 +44,11 @@ router.get('/logout', (req, res) => {
   res.redirect('/')
 })
 
+router.get("/profile", (req, res) => {
+  let username = req.session.loggedInUser.username
+  res.render("user/profile.hbs", { username });
+})
+
 router.get("/home", checkAuth, (req, res, next) => {
   let username = req.session.loggedInUser.username
   res.render("user/home.hbs", { username });
@@ -117,8 +122,11 @@ router.post('/login', validateInput, (req, res, next) => {
 
 router.post("/mood", (req, res, next) => {
   const { mood } = req.body;
-  console.log(mood);
+  // console.log(mood);
 
+  // TODO: what will we do after getting the mood value?
+
+  // TODO: not sure of this, we can do something better instead of redirecting 
   res.redirect("/home");
 })
 
