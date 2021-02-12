@@ -1,2 +1,34 @@
 {{> navbarPartial this}}
 <p>Home Page</p>
+
+
+<div class="mood-query">
+  <p>How are you feeling today?</p>
+  <form action="/mood" method="POST">
+    <button type="submit" name="mood" value="great">
+      <img src="/images/great.png" alt="">
+    </button>
+    <button type="submit" name="mood" value="good">
+      <img src="/images/good.png" alt="">
+    </button>
+    <button type="submit" name="mood" value="annoyed">
+      <img src="/images/annoyed.png" alt="">
+    </button>
+    <button type="submit" name="mood" value="sad">
+      <img src="/images/sad.png" alt="">
+    </button>
+    <button type="submit" name="mood" value="angry">
+      <img src="/images/angry.png" alt="">
+    </button>
+  </form>
+</div>
+
+
+{{!-- <form action="/" method="POST"> --}}
+  {{!-- <label for="great"> --}}
+    {{!-- <input type="radio" name="mood" id="great"> --}}
+    {{!-- <input type="image" src="/images/great.png" alt="great"> --}}
+    {{!-- <button><img src="/images/great.png" alt=""></button> --}}
+    {{!-- </label> --}}
+
+  {{!-- </form> --}}

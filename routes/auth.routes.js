@@ -116,4 +116,14 @@ router.get("/home", (req, res, next) => {
 
 
 
+
+router.post("/mood", (req, res, next) => {
+  const { mood } = req.body;
+  console.log(mood);
+
+  res.redirect("/home");
+})
+
+
+
 module.exports = router

@@ -37,6 +37,41 @@ h1 {
   width: 50%;
 }
 
+
+/* home page */
+
+.mood-query {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 800px;
+  height: 500px;
+  margin: 10% auto;
+}
+
+.mood-query p {
+  align-self: center;
+}
+
+.mood-query form {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-evenly;
+}
+
+.mood-query img {
+  width: 80px;
+}
+
+.mood-query button {
+  background: none;
+  border: none
+}
+
+/* ------------------------ */
+
 .error {
   text-align: end;
 }
