@@ -3,13 +3,14 @@ const bcrypt = require('bcryptjs')
 const User = require('../models/User.model.js')
 
 
+
 // custom middlewares
 
 const validateInput = (req, res, next) => {
   let username = req.body.username
   let password = req.body.password
   if (!username || !password) {
-    res.render('index', {msg: 'Please fill in all fields'})
+    res.render('index', { msg: 'Please fill in all fields' })
   }
   else {
     next()
@@ -53,36 +54,36 @@ router.post('/signup', validateInput, (req, res) => {
   let hash = bcrypt.hashSync(password, salt)
 
   let regexPw = /(?=.*[0-9])/
-  if (!regexPw.test(password) ) {
-      res.render('index', {msg: 'password too weak'})
-      return
+  if (!regexPw.test(password)) {
+    res.render('index', { msg: 'password too weak' })
+    return
   }
 
   if (password !== confirmPassword) {
-    res.render('index', {msg: 'passwords do not match'})
+    res.render('index', { msg: 'passwords do not match' })
     return
   }
 
   User.findOne({ username: username })
-  .then(user => {
+    .then(user => {
       if (user) {
-        res.render('index', {msg: 'Username already exists'})
+        res.render('index', { msg: 'Username already exists' })
       }
       else {
         User.create({ username, password: hash })
-        .then(() => {
-          res.render('index', {msg: 'congrats, you have signed up'})
-      })
-        .catch(err => next(err))
-    }
-  })
-  .catch(err => console.log(err))
+          .then(() => {
+            res.render('index', { msg: 'congrats, you have signed up' })
+          })
+          .catch(err => next(err))
+      }
+    })
+    .catch(err => console.log(err))
 
 })
 
 
 router.post('/login', validateInput, (req, res, next) => {
-  
+
   const { username, password } = req.body
   User.findOne({ username: username })
   .then(result => {
@@ -111,7 +112,10 @@ router.post('/login', validateInput, (req, res, next) => {
 // PROTECTED ROUTES
 
 
+router.get("/home", (req, res, next) => {
+  res.render("user/home.hbs");
+  }) 
 
-
-
+  
+  
 module.exports = router
