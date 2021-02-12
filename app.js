@@ -15,7 +15,7 @@ const hbs = require("hbs");
 const app = express();
 
 // Register handlebar partials
-hbs.registerPartials(__dirname + "/views/partials")
+hbs.registerPartials(__dirname + "/views/partials");
 
 
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares
