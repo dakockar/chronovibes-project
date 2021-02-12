@@ -23,7 +23,7 @@ const capitalized = (string) => string[0].toUpperCase() + string.slice(1).toLowe
 
 app.locals.title = `${capitalized(projectName)}- Generated with IronGenerator`;
 
-
+const mongoose = require("mongoose");
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 
@@ -32,11 +32,11 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
   cookie: {
-    maxAge: 1000*60*60*24 // 1 day
+    maxAge: 1000 * 60 * 60 * 24 // 1 day
   },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
-    ttl: 60*60*24 // 1 day
+    ttl: 60 * 60 * 24 // 1 day
   })
 }))
 
