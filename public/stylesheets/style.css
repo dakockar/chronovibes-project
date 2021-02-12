@@ -26,3 +26,10 @@ h1 {
   margin: 200px auto 0;
   padding: 20px;
 }
+
+/* in the navbarPartial */
+
+#small-logo {
+  width: 40px;
+  margin: 0;
+}

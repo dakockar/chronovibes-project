@@ -108,7 +108,8 @@ router.post('/login', validateInput, (req, res, next) => {
     .catch(err => console.log('error', err))
 })
 
-router.get("/home", (res, req, next) => {
+
+router.get("/home", (req, res, next) => {
   res.render("user/home.hbs");
 })
 

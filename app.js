@@ -14,6 +14,10 @@ const mongoose = require('mongoose')
 const hbs = require("hbs");
 const app = express();
 
+// Register handlebar partials
+hbs.registerPartials(__dirname + "/views/partials")
+
+
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares
 require("./config")(app);
 
@@ -23,7 +27,6 @@ const capitalized = (string) => string[0].toUpperCase() + string.slice(1).toLowe
 
 app.locals.title = `${capitalized(projectName)}`;
 
-const mongoose = require("mongoose");
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 
