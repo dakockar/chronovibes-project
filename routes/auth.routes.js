@@ -44,6 +44,16 @@ router.get('/logout', (req, res) => {
   res.redirect('/')
 })
 
+router.get("/profile", (req, res) => {
+  let username = req.session.loggedInUser.username
+  res.render("user/profile.hbs", { username });
+})
+
+router.get("/home", checkAuth, (req, res, next) => {
+  let username = req.session.loggedInUser.username
+  res.render("user/home.hbs", { username });
+})
+
 
 // POST routes
 
@@ -86,35 +96,39 @@ router.post('/login', validateInput, (req, res, next) => {
 
   const { username, password } = req.body
   User.findOne({ username: username })
-  .then(result => {
-    if (result) {
-      // username exists
-      bcrypt.compare(password, result.password)
-      .then(isMatch => {
-        if (isMatch) {
-          req.session.loggedInUser = result
-          res.redirect('/home')
-        }
-        else {
-          res.render('index', {msg: 'incorrect password'})
-        }
-      })
-    }
-    else {
-      // username doesn't exist
-      res.render('index', {msg: 'Username not found'})
-    }
-  })
-  .catch(err => console.log('error', err))
+    .then(result => {
+      if (result) {
+        // username exists
+        bcrypt.compare(password, result.password)
+          .then(isMatch => {
+            if (isMatch) {
+              req.session.loggedInUser = result
+              res.redirect('/home')
+            }
+            else {
+              res.render('index', { msg: 'incorrect password' })
+            }
+          })
+      }
+      else {
+        // username doesn't exist
+        res.render('index', { msg: 'Username not found' })
+      }
+    })
+    .catch(err => console.log('error', err))
 })
 
 
 
-router.get("/home", checkAuth, (req, res, next) => {
-  let username = req.session.loggedInUser.username
-  res.render("user/home.hbs",  { username });
-  }) 
+router.post("/mood", (req, res, next) => {
+  const { mood } = req.body;
+  // console.log(mood);
 
-  
-  
-module.exports = router, checkAuth
+  // TODO: what will we do after getting the mood value?
+
+  // TODO: not sure of this, we can do something better instead of redirecting 
+  res.redirect("/home");
+})
+
+
+module.exports = router, validateInput, checkAuth

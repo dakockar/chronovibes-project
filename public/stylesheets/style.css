@@ -28,11 +28,8 @@ h1 {
   padding: 20px;
 }
 
-.error {
-  text-align: end;
-}
+/* navbarPartial */
 
-/* in the navbarPartial */
 #small-logo {
   width: 40px;
   margin: 0;
@@ -40,6 +37,43 @@ h1 {
 
 .searchbar {
   width: 50%;
+}
+
+
+/* home page */
+
+.mood-query {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 700px;
+  height: 400px;
+  margin: 5% auto;
+}
+
+.mood-query form {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.mood-query img {
+  width: 80px;
+  margin: 0 12px;
+}
+
+.mood-query button {
+  background: none;
+  border: none
+}
+
+/* ------------------------ */
+
+.error {
+  text-align: end
 }
 
 .btns {

@@ -38,20 +38,20 @@ router.get('/entries', checkAuth, (req, res) => {
 router.get('/entries/:id', checkAuth, (req, res) => {
   let id = req.params.id
   Entry.findById(id)
-  .then(entry => {
-    res.render('user/entrydetails', {entry})
-  })
-  .catch(err => console.log(err))
+    .then(entry => {
+      res.render('user/entrydetails', { entry })
+    })
+    .catch(err => console.log(err))
 });
 
 
 router.get('/entries/edit/:id', checkAuth, (req, res, next) => {
   let id = req.params.id
   Entry.findById(id)
-  .then(entry => {
-    res.render('user/edit-form', {entry})
-  })
-  .catch(err => console.log(err))
+    .then(entry => {
+      res.render('user/edit-form', { entry })
+    })
+    .catch(err => console.log(err))
 })
 
 
@@ -68,28 +68,28 @@ router.post('/create', checkAuth, (req, res) => {
   };
 
   Entry.create(newEntry)
-  .then(() => {
-    res.redirect('/entries')
-  })
-  .catch(err => {
-    console.log(err)
-    res.render('/user/write', {msg: 'Something went wrong, please try again'})
-  })
+    .then(() => {
+      res.redirect('/entries')
+    })
+    .catch(err => {
+      console.log(err)
+      res.render('/user/write', { msg: 'Something went wrong, please try again' })
+    })
 
 });
 
 
 router.post('/entries/edit/:id', checkAuth, (req, res, next) => {
 
-    let id = req.params.id
-    const { title, entryBody, tags } = req.body;
-    let editedEntry = {
-      title: title,
-      entryBody: entryBody,
-      tags: tags
-    };
-   
-    Entry.findByIdAndUpdate(id, editedEntry)
+  let id = req.params.id
+  const { title, entryBody, tags } = req.body;
+  let editedEntry = {
+    title: title,
+    entryBody: entryBody,
+    tags: tags
+  };
+
+  Entry.findByIdAndUpdate(id, editedEntry)
     .then(() => {
       res.redirect('/entries')
     })
@@ -98,14 +98,14 @@ router.post('/entries/edit/:id', checkAuth, (req, res, next) => {
 
 router.post('/entries/delete/:id', checkAuth, (req, res, next) => {
   let id = req.params.id
-  
+
   Entry.findByIdAndDelete(id)
-  .then(() => {
-    res.redirect('/entries')
-  })
-  .catch(err => {
-    console.log(err)
-  })
+    .then(() => {
+      res.redirect('/entries')
+    })
+    .catch(err => {
+      console.log(err)
+    })
 });
 
 
