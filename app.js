@@ -3,12 +3,12 @@ require("dotenv/config");
 
 const mongoURI = process.env.MONGO_URI;
 
-
 // ℹ️ Connects to the database
 require("./db");
 
 // Handles http requests (express is node js framework)
 const express = require("express");
+const mongoose = require('mongoose')
 
 // Handles the handlebars
 const hbs = require("hbs");
@@ -21,7 +21,7 @@ require("./config")(app);
 const projectName = "chronovibes-project";
 const capitalized = (string) => string[0].toUpperCase() + string.slice(1).toLowerCase();
 
-app.locals.title = `${capitalized(projectName)}- Generated with IronGenerator`;
+app.locals.title = `${capitalized(projectName)}`;
 
 const mongoose = require("mongoose");
 const session = require('express-session')

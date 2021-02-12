@@ -10,7 +10,7 @@ const validateInput = (req, res, next) => {
   let username = req.body.username
   let password = req.body.password
   if (!username || !password) {
-    res.render('SIGNUPVIEW-HERE', { msg: 'Please fill all fields' })
+    res.render('index', { msg: 'Please fill in all fields' })
   }
   else {
     next()
@@ -22,7 +22,7 @@ const checkAuth = (req, res, next) => {
     next()
   }
   else {
-    res.redirect('LOGINVEW-HERE')
+    res.redirect('/')
   }
 }
 
@@ -30,12 +30,12 @@ const checkAuth = (req, res, next) => {
 // GET routes
 
 router.get('/signup', (req, res) => {
-  res.render('SIGNUPVIEW-HERE')
+  res.render('index')
 })
 
 
 router.get('/login', (req, res) => {
-  res.render('LOGINVIEW-HERE')
+  res.render('index')
 })
 
 
@@ -49,25 +49,30 @@ router.get('/logout', (req, res) => {
 
 router.post('/signup', validateInput, (req, res) => {
 
-  const { username, password } = req.body
+  const { username, password, confirmPassword } = req.body
   let salt = bcrypt.genSaltSync(10)
   let hash = bcrypt.hashSync(password, salt)
 
   let regexPw = /(?=.*[0-9])/
   if (!regexPw.test(password)) {
-    res.render('SIGNUPVIEW-HERE', { msg: 'password too weak' })
+    res.render('index', { msg: 'password too weak' })
+    return
+  }
+
+  if (password !== confirmPassword) {
+    res.render('index', { msg: 'passwords do not match' })
     return
   }
 
   User.findOne({ username: username })
     .then(user => {
       if (user) {
-        res.render('SIGNUPVIEWHERE', { msg: 'Username already exists' })
+        res.render('index', { msg: 'Username already exists' })
       }
       else {
         User.create({ username, password: hash })
           .then(() => {
-            res.render('HOMEVIEW-HERE', { msg: 'congrats, you have signed up' })
+            res.render('index', { msg: 'congrats, you have signed up' })
           })
           .catch(err => next(err))
       }
@@ -108,4 +113,7 @@ router.get("/home", (res, req, next) => {
 })
 
 
-module.exports = router;
+// PROTECTED ROUTES
+
+
+module.exports = router
