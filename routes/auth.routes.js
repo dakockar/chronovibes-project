@@ -44,6 +44,11 @@ router.get('/logout', (req, res) => {
   res.redirect('/')
 })
 
+router.get("/home", checkAuth, (req, res, next) => {
+  let username = req.session.loggedInUser.username
+  res.render("user/home.hbs", { username });
+})
+
 
 // POST routes
 
@@ -72,7 +77,7 @@ router.post('/signup', validateInput, (req, res) => {
       else {
         User.create({ username, password: hash })
           .then(() => {
-            res.render('index', { msg: 'congrats, you have signed up' })
+            res.render('home')
           })
           .catch(err => next(err))
       }
@@ -110,13 +115,6 @@ router.post('/login', validateInput, (req, res, next) => {
 
 
 
-router.get("/home", (req, res, next) => {
-  res.render("user/home.hbs");
-})
-
-
-
-
 router.post("/mood", (req, res, next) => {
   const { mood } = req.body;
   console.log(mood);
@@ -125,5 +123,4 @@ router.post("/mood", (req, res, next) => {
 })
 
 
-
-module.exports = router
+module.exports = router, validateInput, checkAuth

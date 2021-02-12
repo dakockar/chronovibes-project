@@ -27,7 +27,7 @@ h1 {
   padding: 20px;
 }
 
-/* in the navbarPartial */
+/* navbarPartial */
 #small-logo {
   width: 40px;
   margin: 0;
@@ -46,9 +46,9 @@ h1 {
   justify-content: space-evenly;
   border: 1px solid black;
   border-radius: 10px;
-  width: 800px;
-  height: 500px;
-  margin: 10% auto;
+  width: 700px;
+  height: 400px;
+  margin: 5% auto;
 }
 
 .mood-query p {
@@ -57,7 +57,7 @@ h1 {
 
 .mood-query form {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-evenly;
 }
 
@@ -73,5 +73,16 @@ h1 {
 /* ------------------------ */
 
 .error {
-  text-align: end;
+  text-align: end
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper {
+  width: 50%;
+  margin: auto;
+  padding: 2em;
 }
