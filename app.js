@@ -1,8 +1,6 @@
 // ℹ️ Gets access to environment variables/settings
 require("dotenv/config");
 
-const mongoURI = process.env.MONGO_URI;
-
 // ℹ️ Connects to the database
 require("./db");
 
