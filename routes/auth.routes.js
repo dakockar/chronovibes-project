@@ -9,7 +9,7 @@ const validateInput = (req, res, next) => {
   let username = req.body.username
   let password = req.body.password
   if (!username || !password) {
-    res.render('SIGNUPVIEW-HERE', {msg: 'Please fill all fields'})
+    res.render('index', {msg: 'Please fill in all fields'})
   }
   else {
     next()
@@ -21,7 +21,7 @@ const checkAuth = (req, res, next) => {
     next()
   }
   else {
-    res.redicrect('LOGINVEW-HERE')
+    res.redirect('/')
   }
 }
 
@@ -29,12 +29,12 @@ const checkAuth = (req, res, next) => {
 // GET routes
 
 router.get('/signup', (req, res) => {
-  res.render('SIGNUPVIEW-HERE')
+  res.render('index')
 })
 
 
 router.get('/login', (req, res) => {
-  res.render('LOGINVIEW-HERE')
+  res.render('index')
 })
 
 
@@ -48,7 +48,7 @@ router.get('/logout', (req, res) => {
 
 router.post('/signup', validateInput, (req, res) => {
 
-  const { username, password } = req.body
+  const { username, password, confirmPassword } = req.body
   let salt = bcrypt.genSaltSync(10)
   let hash = bcrypt.hashSync(password, salt)
 
@@ -56,6 +56,11 @@ router.post('/signup', validateInput, (req, res) => {
   if (!regexPw.test(password) ) {
       res.render('SIGNUPVIEW-HERE', {msg: 'password too weak'})
       return
+  }
+
+  if (password !== confirmPassword) {
+    res.render('index', {msg: 'passwords do not match'})
+    return
   }
 
   User.findOne({ username: username })
