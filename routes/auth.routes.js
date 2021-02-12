@@ -72,7 +72,7 @@ router.post('/signup', validateInput, (req, res) => {
       else {
         User.create({ username, password: hash })
           .then(() => {
-            res.render('index', { msg: 'congrats, you have signed up' })
+            res.render('home')
           })
           .catch(err => next(err))
       }
@@ -109,13 +109,12 @@ router.post('/login', validateInput, (req, res, next) => {
 })
 
 
-// PROTECTED ROUTES
 
-
-router.get("/home", (req, res, next) => {
-  res.render("user/home.hbs");
+router.get("/home", checkAuth, (req, res, next) => {
+  let username = req.session.loggedInUser.username
+  res.render("user/home.hbs",  { username });
   }) 
 
   
   
-module.exports = router
+module.exports = router, validateInput, checkAuth

@@ -36,3 +36,18 @@ h1 {
   width: 40px;
   margin: 0;
 }
+
+.searchbar {
+  width: 50%;
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper {
+  width: 50%;
+  margin: auto;
+  padding: 2em;
+}

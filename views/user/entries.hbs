@@ -1,8 +1,24 @@
 
-{{#each entries}}
-<h1>{{this.title}}</h1>
-<div>{{this.entryBody}}</div>
-{{#if this.tags}}
-  <div>{{this.tags}}</div>
-{{/if}}
-{{/each}}
+{{> navbarPartial this}}
+
+<div class="wrapper">
+    {{#each entries}}
+
+    <h1>{{this.title}}</h1>
+    <div>{{this.entryBody}}</div>
+
+    {{#if this.tags}}
+      <div>{{this.tags}}</div>
+    {{/if}}
+
+              <div class="btns">
+                  <a href="/entries/edit/{{this._id}}">
+                    <button type="button">edit</button>
+                  </a>
+                  <form action="/entries/delete/{{this._id}}" method="POST" onSubmit="if(!confirm('Delete entry?')){return false;}">
+                    <button type="submit">delete</button>
+                  </form>
+              </div>
+    {{/each}}
+
+</div>
