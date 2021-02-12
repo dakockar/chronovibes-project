@@ -33,3 +33,7 @@ h1 {
   width: 40px;
   margin: 0;
 }
+
+.searchbar {
+  width: 50%;
+}

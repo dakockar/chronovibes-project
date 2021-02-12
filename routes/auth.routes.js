@@ -109,12 +109,12 @@ router.post('/login', validateInput, (req, res, next) => {
 })
 
 
+// PROTECTED ROUTES
+
 router.get("/home", (req, res, next) => {
   res.render("user/home.hbs");
 })
 
-
-// PROTECTED ROUTES
 
 
 module.exports = router
