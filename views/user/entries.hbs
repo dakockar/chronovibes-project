@@ -1,0 +1,8 @@
+
+{{#each entries}}
+<h1>{{this.title}}</h1>
+<div>{{this.entryBody}}</div>
+{{#if this.tags}}
+  <div>{{this.tags}}</div>
+{{/if}}
+{{/each}}

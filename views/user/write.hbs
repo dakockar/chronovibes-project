@@ -1,8 +1,18 @@
-<div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Title</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-</div>
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">write an entry</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+<div class="wrapper">
+<form action="/create" method="POST">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title" name="title" required>
+  </div>
+  <div class="mb-3">
+    <label for="entry-body" class="form-label">Write an entry or sth</label>
+    <textarea class="form-control" id="entry-body" name="entryBody" rows="4" required></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="tags" class="form-label">Tags</label>
+    <input type="text" class="form-control" id="tags" name="tags">
+  </div>
+  <button type="submit">Submit</button>
+</form>
 </div>
