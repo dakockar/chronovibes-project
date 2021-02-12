@@ -103,3 +103,5 @@ router.post('/login', validateInput, (req, res, next) => {
 })
 
 
+// PROTECTED ROUTES
+

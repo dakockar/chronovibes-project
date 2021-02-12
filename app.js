@@ -1,6 +1,8 @@
 // ℹ️ Gets access to environment variables/settings
 require("dotenv/config");
 
+const mongoURI = process.env.MONGO_URI;
+
 // ℹ️ Connects to the database
 require("./db");
 
@@ -18,7 +20,7 @@ require("./config")(app);
 const projectName = "chronovibes-project";
 const capitalized = (string) => string[0].toUpperCase() + string.slice(1).toLowerCase();
 
-app.locals.title = `${capitalized(projectName)}- Generated with IronGenerator`;
+app.locals.title = `${capitalized(projectName)}`;
 
 
 const session = require('express-session')
