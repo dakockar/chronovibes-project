@@ -117,4 +117,4 @@ router.get("/home", checkAuth, (req, res, next) => {
 
   
   
-module.exports = router, validateInput, checkAuth
+module.exports = router, checkAuth
