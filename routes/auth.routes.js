@@ -54,7 +54,7 @@ router.post('/signup', validateInput, (req, res) => {
 
   let regexPw = /(?=.*[0-9])/
   if (!regexPw.test(password) ) {
-      res.render('SIGNUPVIEW-HERE', {msg: 'password too weak'})
+      res.render('index', {msg: 'password too weak'})
       return
   }
 
@@ -66,12 +66,12 @@ router.post('/signup', validateInput, (req, res) => {
   User.findOne({ username: username })
   .then(user => {
       if (user) {
-        res.render('SIGNUPVIEWHERE', {msg: 'Username already exists'})
+        res.render('index', {msg: 'Username already exists'})
       }
       else {
         User.create({ username, password: hash })
         .then(() => {
-          res.render('HOMEVIEW-HERE', {msg: 'congrats, you have signed up'})
+          res.render('index', {msg: 'congrats, you have signed up'})
       })
         .catch(err => next(err))
     }
@@ -110,3 +110,5 @@ router.post('/login', validateInput, (req, res, next) => {
 
 // PROTECTED ROUTES
 
+
+module.exports = router

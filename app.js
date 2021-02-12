@@ -8,6 +8,7 @@ require("./db");
 
 // Handles http requests (express is node js framework)
 const express = require("express");
+const mongoose = require('mongoose')
 
 // Handles the handlebars
 const hbs = require("hbs");
