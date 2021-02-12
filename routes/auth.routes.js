@@ -93,16 +93,16 @@ router.post('/login', validateInput, (req, res, next) => {
           .then(isMatch => {
             if (isMatch) {
               req.session.loggedInUser = result
-              res.redirect('/home');
+              res.redirect('/home')
             }
             else {
-              res.render('LOGINVIEW-HERE', { msg: 'incorrect password' })
+              res.render('index', { msg: 'incorrect password' })
             }
           })
       }
       else {
         // username doesn't exist
-        res.render('LOGINVIEW-HERE', { msg: 'Username not found' })
+        res.render('index', { msg: 'Username not found' })
       }
     })
     .catch(err => console.log('error', err))
@@ -114,6 +114,9 @@ router.post('/login', validateInput, (req, res, next) => {
 router.get("/home", (req, res, next) => {
   res.render("user/home.hbs");
 })
+
+
+
 
 
 

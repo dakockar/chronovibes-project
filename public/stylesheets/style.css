@@ -37,3 +37,7 @@ h1 {
 .searchbar {
   width: 50%;
 }
+
+.error {
+  text-align: end;
+}
