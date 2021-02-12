@@ -12,9 +12,10 @@ h1 {
   color: 15px;
 }
 
-/*# sourceMappingURL=style.css.map */
+/* # sourceMappingURL=style.css.map */
 
-#user-form {
+
+.user-form {
   width: 300px;
   margin: 20px auto;
   align-items: center;
@@ -91,10 +92,12 @@ h1 {
   margin: auto;
   padding: 2em;
 }
+
 .wrapper a {
   text-decoration: none;
   color: rgb(52, 129, 148)
 }
+
 .wrapper a:hover {
   color: black
 }
@@ -117,8 +120,9 @@ h1 {
   color: white;
   transition: all .5s ease-in-out;
 }
+
 .entrybox button:hover {
-  background-color:  rgb(20,20,20);
+  background-color: rgb(20, 20, 20);
   color: rgb(204, 204, 204)
 }
 

@@ -8,14 +8,14 @@
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     {{!-- login tab --}}
     <li class="nav-item" role="presentation">
-      
+
       <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button"
         role="tab"
         aria-controls="login" aria-selected="true">Login</button>
     </li>
     {{!-- signup tab --}}
     <li class="nav-item" role="presentation">
-     
+
       <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup" type="button" role="tab"
         aria-controls="signup" aria-selected="false">Sign Up</button>
     </li>
@@ -27,7 +27,7 @@
     {{!-- login tab content--}}
     <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
 
-      <form id="user-form" action="/login" method="POST">
+      <form class="user-form" action="/login" method="POST">
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
           <input name="username" type="text" class="form-control" id="username" aria-describedby="emailHelp">
@@ -43,24 +43,24 @@
     </div>
     {{!-- signup tab content--}}
     <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
-      <form id="user-form" action="/signup" method="POST">
+      <form class="user-form" action="/signup" method="POST">
         <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
-          <input name="username" type="text" class="form-control" id="username" aria-describedby="emailHelp">
+          <label for="username-s" class="form-label">Username</label>
+          <input name="username" type="text" class="form-control" id="username-s" aria-describedby="emailHelp">
           {{!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
         </div>
         <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input name="password" type="password" class="form-control" id="password">
+          <label for="password-s" class="form-label">Password</label>
+          <input name="password" type="password" class="form-control" id="password-s">
         </div>
         <div class="mb-3">
-          <label for="confirmPassword" class="form-label">Confirm Password</label>
-          <input name="confirmPassword" type="password" class="form-control" id="confirmPassword">
+          <label for="confirmPassword-s" class="form-label">Confirm Password</label>
+          <input name="confirmPassword" type="password" class="form-control" id="confirmPassword-s">
         </div>
         <button type="submit" class="btn btn-primary">Sign up!</button>
       </form>
     </div>
   </div>
-  
+
   {{!-- --------------------- --}}
 </div>
