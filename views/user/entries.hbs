@@ -3,8 +3,17 @@
 
 <div class="wrapper">
 
-<button class="btns" onclick="(createCal(cal, 2021, 3))">Open calendar</button>
- <div class="cal"></div> 
+
+ <div class="calendar">
+   <div class="cal-header">
+     <div class="cal-month"></div>
+     <div>
+       <button onclick="createCal(currentYear, currentMonth--)"><</button>
+       <button onclick="createCal(currentYear, currentMonth++)">></button>
+     </div>
+   </div>
+   <div class="cal-table"></div>
+ </div> 
 
 
 {{#if entries}}
@@ -28,8 +37,10 @@
 </div>
 
 
-
+<script src="../js/entries.js"></script>
 <script>
-  //TODO can this maybe be defined somewhere else? 
-  let cal = document.querySelector('.cal');
+
+// call cal maker with current date
+createCal(currentYear, currentMonth)
+
 </script>

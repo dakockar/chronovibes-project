@@ -150,10 +150,35 @@ h1 {
   font-weight: 600;
 }
 
-.cal {
-  width: 35%
+/* Calendar  */
+
+.calendar {
+  width: 100%;
+
+}
+.cal-header {
+  font-size: 2em;
+  font-style: italic;
+  color: lightgrey;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
+.cal-header button {
+  padding: .2em;
+}
+.cal-header button:hover {
+  background: rgb(20,20,20);
+  color: white;
+}
+table {
+  margin: auto;
+  background: rgb(208, 255, 243)
+}
 td {
-  padding: 1em;
+  padding: 1.5em;
+}
+td:hover {
+  background: rgb(216, 216, 216);
 }
