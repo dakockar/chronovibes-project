@@ -102,6 +102,12 @@ h1 {
   color: black
 }
 
+.wrapper button {
+  outline: none;
+  border: none;
+  padding: .5em;
+}
+
 
 /* Entry styling */
 
@@ -142,4 +148,12 @@ h1 {
 
 .username {
   font-weight: 600;
+}
+
+.cal {
+  width: 35%
+}
+
+td {
+  padding: 1em;
 }

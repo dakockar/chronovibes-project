@@ -3,6 +3,11 @@
 
 <div class="wrapper">
 
+<button class="btns" onclick="(createCal(cal, 2021, 3))">Open calendar</button>
+ <div class="cal"></div> 
+
+
+{{#if entries}}
   {{#each entries}}
   <div class="entrybox">
 
@@ -17,5 +22,14 @@
 
   </div>
   {{/each}}
-
+{{else}}
+  <div>No entries</div>
+{{/if}}
 </div>
+
+
+
+<script>
+  //TODO can this maybe be defined somewhere else? 
+  let cal = document.querySelector('.cal');
+</script>
