@@ -139,3 +139,7 @@ h1 {
 .entry-body {
   margin: 1.5em 0;
 }
+
+.username {
+  font-weight: 600;
+}

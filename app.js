@@ -15,6 +15,12 @@ const app = express();
 // Register handlebar partials
 hbs.registerPartials(__dirname + "/views/partials");
 
+// Dateformat helpers
+hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
+
+var Handlebars = require("handlebars");
+var MomentHandler = require("handlebars.moment");
+MomentHandler.registerHelpers(Handlebars);
 
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares
 require("./config")(app);

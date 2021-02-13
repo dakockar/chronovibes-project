@@ -46,7 +46,8 @@ router.get('/logout', (req, res) => {
 
 router.get("/profile", (req, res) => {
   let username = req.session.loggedInUser.username
-  res.render("user/profile.hbs", { username });
+  let signupDate = req.session.loggedInUser.signedUp
+  res.render("user/profile.hbs", { username, signupDate });
 })
 
 router.get("/home", checkAuth, (req, res, next) => {
