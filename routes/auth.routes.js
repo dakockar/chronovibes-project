@@ -82,7 +82,7 @@ router.post('/signup', validateInput, (req, res) => {
       else {
         User.create({ username, password: hash })
           .then(() => {
-            res.render('home')
+            res.render('user/home')
           })
           .catch(err => next(err))
       }
