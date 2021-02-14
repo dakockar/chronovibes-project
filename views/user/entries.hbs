@@ -1,46 +1,43 @@
-
 {{> navbarPartial this}}
+<div class="entries-page">
 
-<div class="wrapper">
+  <div class="calendar">
+    <div class="cal-header">
+      <div class="cal-month"></div>
+      <div>
+        <button onclick="createCal(currentYear, currentMonth--)">
+          << /button>
+            <button onclick="createCal(currentYear, currentMonth++)">></button>
+      </div>
+    </div>
+    <div class="cal-table"></div>
+  </div>
 
 
- <div class="calendar">
-   <div class="cal-header">
-     <div class="cal-month"></div>
-     <div>
-       <button onclick="createCal(currentYear, currentMonth--)"><</button>
-       <button onclick="createCal(currentYear, currentMonth++)">></button>
-     </div>
-   </div>
-   <div class="cal-table"></div>
- </div> 
+  <div class="entrywrapper">
 
 
-{{#if entries}}
-  {{#each entries}}
-  <div class="entrybox">
+    {{#if entries}}
+    {{#each entries}}
+    <div class="entrybox">
 
-    <h1><a href="/entries/{{this._id}}">{{this.title}}</a></h1>
-    <div class="entry-date">{{dateFormat this.time "MMMM Do YYYY"}}</div>
-    <div class="entry-body">{{this.entryBody}}</div>
+      <h1><a href="/entries/{{this._id}}">{{this.title}}</a></h1>
+      <div class="entry-date">{{dateFormat this.time "MMMM Do YYYY"}}</div>
+      <div class="entry-body">{{this.entryBody}}</div>
 
-    {{#if this.tags}}
-    <div class="tags">{{this.tags}}</div>
+      {{#if this.tags}}
+      <div class="tags">{{this.tags}}</div>
+      {{/if}}
+
+
+    </div>
+    {{/each}}
+    {{else}}
+    <div id="empty">No entries</div>
     {{/if}}
 
-
   </div>
-  {{/each}}
-{{else}}
-  <div>No entries</div>
-{{/if}}
 </div>
 
 
 <script src="../js/entries.js"></script>
-<script>
-
-// call cal maker with current date
-createCal(currentYear, currentMonth)
-
-</script>
