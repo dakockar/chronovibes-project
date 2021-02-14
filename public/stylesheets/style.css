@@ -153,7 +153,7 @@ h1 {
 
 .wrapper {
   font-family: 'Raleway';
-  width: 45%;
+  width: 55%;
   margin: auto;
   padding: 2em;
 }
@@ -180,10 +180,31 @@ h1 {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
+  background-image: url('../images/VFtjdc.jpg'); 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh; 
+}
+
+.single-entry {
+  /* background-image: url('../images/pexels-daniel-absi-952670.jpg');  */
+  background-image: url('../images/wallpaperbetter (1).jpg'); 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh; 
+
+}
+.singleentrybox {
+  margin: 2em;
+  padding: 2em;
+  color: rgb(211, 211, 211);
+  letter-spacing: .05em;
+  line-height: 1.8em;
+  background: rgba(200, 200, 200,.2);
+  backdrop-filter: blur(6px);
 }
 
 .entrywrapper {
-  background: rgb(207, 207, 207);
   font-family: 'Raleway';
   width: 50%;
 }
@@ -206,10 +227,14 @@ h1 {
 .entrybox {
   margin: 2em;
   padding: 2em;
-  background-color: rgb(233, 233, 233);
+  color: rgb(211, 211, 211);
+  letter-spacing: .05em;
+  line-height: 1.8em;
+  background: rgba(200, 200, 200,.2);
+  backdrop-filter: blur(3px);
 }
 
-.entrybox button {
+.singleentrybox button {
   border-radius: 4px;
   border: none;
   outline: none;
@@ -219,7 +244,7 @@ h1 {
   transition: all .5s ease-in-out;
 }
 
-.entrybox button:hover {
+.singleentrybox button:hover {
   background-color: rgb(20, 20, 20);
   color: rgb(204, 204, 204)
 }
@@ -245,8 +270,43 @@ h1 {
   font-weight: 600;
 }
 
+
+/* Profile */
+
+.profilebox {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.profilebox > div {
+  border: lightgray 1px solid;
+  border-radius: 5px;
+  padding: 1em;
+  margin: 2em;
+  max-width: 40%;
+}
+
+.profilebox h1 {
+  font-family: 'Supermercado One';
+  font-size: 3em;
+  background: rgb(111, 141, 111);
+  color: white;
+  width: 300px;
+  padding: .4em;
+  border-radius: 6px;
+}
+
+.userinfo > div {
+  margin-top: 1em;
+}
+
 /* Calendar  */
 
+.calendar {
+  width: 60%;
+}
 .calendar a {
   text-decoration: none;
   color: rgb(152, 132, 170)
@@ -265,8 +325,10 @@ h1 {
   font-size: 1.5em;
   padding: .7em;
   font-style: italic;
-  color: lightgrey;
-  background: rgb(99, 99, 99);
+  background: rgb(131, 131, 131);
+  color: white;
+  padding: .4em;
+  border-radius: 6px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -274,6 +336,7 @@ h1 {
 
 .cal-header button {
   padding: .2em;
+  border-radius: 5px;
 }
 
 .cal-header button:hover {
@@ -307,10 +370,4 @@ td:hover {
 #quote {
   padding: 1.5em;
   color: grey;
-}
-
-/* Profile */
-
-.profilebox h1 {
-  font-family: 'Supermercado One'
 }

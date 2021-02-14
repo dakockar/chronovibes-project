@@ -56,10 +56,10 @@ router.get("/home", checkAuth, (req, res, next) => {
   User.findOne({ username: username })
     .then((user) => {
       if (user.isMoodChosen) {
-        res.render("user/home-mood-chosen.hbs", { user });
+        res.render("user/home-mood-chosen.hbs", { user, username });
       }
       else {
-        res.render("user/home.hbs", { user });
+        res.render("user/home.hbs", { user, username });
       }
     })
     .catch((err) => {

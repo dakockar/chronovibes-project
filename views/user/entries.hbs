@@ -1,23 +1,10 @@
+
 {{> navbarPartial this}}
 <div class="entries-page">
 
-  <div class="calendar">
-    <div class="cal-header">
-      <div class="cal-month"></div>
-      <div>
-        <button onclick="createCal(currentYear, currentMonth--)">
-          << /button>
-            <button onclick="createCal(currentYear, currentMonth++)">></button>
-      </div>
-    </div>
-    <div class="cal-table"></div>
-  </div>
-
-
   <div class="entrywrapper">
 
-
-    {{#if entries}}
+  {{#if entries}}
     {{#each entries}}
     <div class="entrybox">
 
@@ -34,10 +21,9 @@
     {{/each}}
     {{else}}
     <div id="empty">No entries</div>
-    {{/if}}
+  {{/if}}
 
   </div>
 </div>
 
 
-<script src="../js/entries.js"></script>
