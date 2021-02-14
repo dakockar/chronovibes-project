@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&family=Supermercado+One&display=swap');
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
+  font-family: 'Raleway';
   margin: 0;
   padding: 0;
 }
@@ -22,13 +25,14 @@ h1 {
   margin: 20px auto;
   align-items: center;
   justify-content: center;
-  color: rgb(80,80,80)
+  color: rgb(80,80,80);
 }
 
 .form-container {
   width: 500px;
   margin: 20px auto 0;
   padding: 20px;
+  letter-spacing: .2em;
 }
 
 .form-container button {
@@ -44,7 +48,7 @@ h1 {
 /* navbarPartial */
 
 #small-logo {
-  width: 100px;
+  width: 120px;
   margin: 0;
 }
 
@@ -54,8 +58,15 @@ h1 {
 
 .navbar {
   padding: 4em;
+  font-family: 'Raleway';
+  letter-spacing: .1em;
+  font-weight: bold;
 }
 
+.nav-tabs button {
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}
 /* home page */
 
 .mood-query {
@@ -109,7 +120,8 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: rgba(124, 124, 124, 0.5);
+  background: rgba(119, 124, 119, 0.5);
+  background: rgba(20,20,20,.9);
   align-items: center;
 }
 .greet {
@@ -117,6 +129,7 @@ h1 {
   color: rgb(109, 109, 109)
 }
 .wrapper {
+  font-family: 'Raleway';
   width: 50%;
   margin: auto;
   padding: 2em;
@@ -201,8 +214,13 @@ h1 {
   background: rgb(20,20,20);
   color: white;
 }
+
+.cal-month {
+    font-family: 'Supermercado One'
+}
+
 table {
-  margin: auto;
+  margin: 3em auto;
   background: rgb(243, 243, 243)
 }
 th {
@@ -218,4 +236,10 @@ td:hover {
 #quote {
   padding: 1.5em;
   color: grey;
+}
+
+/* Profile */
+
+.profilebox h1 {
+  font-family: 'Supermercado One'
 }
