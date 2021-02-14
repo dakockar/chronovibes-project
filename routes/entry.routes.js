@@ -142,7 +142,7 @@ router.post('/search', checkAuth, (req, res) => {
   let queryStr = req.body.search
   Entry.find(
     { authorId: req.session.loggedInUser._id, 
-     $or: [ {entryBody: new RegExp(req.body.search, 'i') }, {title: new RegExp(req.body.search, 'i') } ] 
+     $or: [ {entryBody: new RegExp(queryStr, 'i') }, {title: new RegExp(queryStr, 'i') } ] 
    })
    .then(results => {
      console.log(results)
