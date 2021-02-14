@@ -1,22 +1,7 @@
 {{> navbarPartial this}}
 <div class="entries-page">
 
-  <div class="calendar">
-    <div class="cal-header">
-      <div class="cal-month"></div>
-      <div>
-        {{!-- less than --}}
-        <button onclick="createCal(currentYear, currentMonth--)">&#60;</button>
-        {{!-- greater than --}}
-        <button onclick="createCal(currentYear, currentMonth++)">&#62;</button>
-      </div>
-    </div>
-    <div class="cal-table"></div>
-  </div>
-
-
   <div class="entrywrapper">
-
 
     {{#if entries}}
     {{#each entries}}
@@ -39,6 +24,3 @@
 
   </div>
 </div>
-
-
-<script src="../js/entries.js"></script>

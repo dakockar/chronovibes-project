@@ -5,10 +5,26 @@
   {{!-- <p>Welcome to your Profile Page, <span class="username">{{username}}</span></p> --}}
 
   <div class="profilebox">
-    <h1>{{user.username}}</h1>
-    <div>Joined:<span class="signup-date"> {{dateFormat signupDate "dddd, MMMM Do YYYY, h:mm:ss a"}}</span></div>
 
+    <div class="userinfo">
+      <h1>{{user.username}}</h1>
+      <div>Joined:<p class="signup-date"> {{dateFormat signupDate "dddd, MMMM Do YYYY, h:mm:ss a"}}</p>
+      </div>
+    </div>
+
+    <div class="calendar">
+      <div class="cal-header">
+        <div class="cal-month"></div>
+        <div>
+          <button onclick="createCal(currentYear, currentMonth--)">&#60;</button>
+          <button onclick="createCal(currentYear, currentMonth++)">&#62;</button>
+        </div>
+      </div>
+      <div class="cal-table"></div>
+    </div>
 
   </div>
 
 </div>
+
+<script src="../js/entries.js"></script>

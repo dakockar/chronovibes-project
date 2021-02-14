@@ -2,8 +2,11 @@
 
 
 <div class="wrapper">
-  <h1>results for " {{queryStr}} "</h1>
-  {{#each results}}
+{{#if results}}
+
+<h1>results for "{{queryStr}}"</h1>
+
+{{#each results}}
 
   <div class="entrybox">
 
@@ -18,4 +21,9 @@
 
   </div>
   {{/each}}
+
+  {{else}}
+  <h2>No results for "{{queryStr}}"</h2>
+  {{/if}}
+
 </div>

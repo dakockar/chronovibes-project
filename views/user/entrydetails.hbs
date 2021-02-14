@@ -1,10 +1,10 @@
 
 {{> navbarPartial this}}
-
+<div class="single-entry">
 <div class="wrapper">
 
   <a href="/entries">« entries</a>
-  <div class="entrybox">
+  <div class="singleentrybox">
     <h1>{{entry.title}}</h1>
     <div class="entry-date">{{dateFormat entry.time "dddd, MMMM Do YYYY, h:mm:ss a"}}</div>
     <div class="entry-body">{{entry.entryBody}}</div>
@@ -19,4 +19,5 @@
             </form>
           </div>
   </div>
+</div>
 </div>
