@@ -25,13 +25,13 @@ router.get('/write', checkAuth, (req, res) => {
 
 router.get('/entries', checkAuth, (req, res) => {
 
-  Entry.find({ authorId: req.session.loggedInUser._id})
-  .populate('authorId', 'username')
-  .then(entries => {
-    res.render('user/entries', {entries})
-  })
-  .catch(err =>
-    console.log(err))
+  Entry.find({ authorId: req.session.loggedInUser._id })
+    .populate('authorId', 'username')
+    .then(entries => {
+      res.render('user/entries', { entries })
+    })
+    .catch(err =>
+      console.log(err))
 });
 
 
@@ -58,7 +58,7 @@ router.get('/entries/edit/:id', checkAuth, (req, res, next) => {
 // POST
 
 router.post('/create', checkAuth, (req, res) => {
-  
+
   const { title, entryBody, tags } = req.body;
   let newEntry = {
     title: title,
