@@ -1,8 +1,6 @@
 
 {{> navbarPartial this}}
-
-<div class="wrapper">
-
+<div class="entries-page">
 
  <div class="calendar">
    <div class="cal-header">
@@ -14,6 +12,9 @@
    </div>
    <div class="cal-table"></div>
  </div> 
+
+
+<div class="entrywrapper">
 
 
 {{#if entries}}
@@ -32,15 +33,11 @@
   </div>
   {{/each}}
 {{else}}
-  <div>No entries</div>
+  <div id="empty">No entries</div>
 {{/if}}
+
+</div>
 </div>
 
 
 <script src="../js/entries.js"></script>
-<script>
-
-// call cal maker with current date
-createCal(currentYear, currentMonth)
-
-</script>

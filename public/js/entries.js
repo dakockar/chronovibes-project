@@ -4,8 +4,8 @@ let currentDate = today.getDate()
 let currentMonth = today.getMonth()
 let currentYear = today.getFullYear()
 
-
-// generate calendar view in entries page (maybe elsewhere?)
+// call cal maker with current date
+createCal(currentYear, currentMonth)
 
 function createCal(year, month) {
       
@@ -21,7 +21,8 @@ function createCal(year, month) {
 
     // filled cells
     while (d.getMonth() == month ) {
-        table += `<td><a href="/something/${d.getMonth()+1}/${d.getDate()}">${d.getDate()}</a></td>`
+        let monthVal = d.getMonth()+1 < 10 ? `0${d.getMonth()+1}` : d.getMonth()+1 // this is to always return 2-digit month
+        table += `<td><a href="/entries/${d.getFullYear()}/${monthVal}/${d.getDate()}">${d.getDate()}</a></td>`
 
         if (getDay(d) % 7 == 6) { // gets to last day of week
             table += '<tr></tr>'
