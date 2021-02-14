@@ -14,8 +14,12 @@ const userSchema = new Schema({
   signedUp: {
     type: Date,
     default: Date.now
+  },
+  mood: String,
+  isMoodChosen: {
+    type: Boolean,
+    default: false
   }
-
 });
 
 const User = model("User", userSchema);

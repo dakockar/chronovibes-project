@@ -45,14 +45,26 @@ router.get('/logout', (req, res) => {
 })
 
 router.get("/profile", (req, res) => {
-  let username = req.session.loggedInUser.username
-  let signupDate = req.session.loggedInUser.signedUp
+  let username = req.session.loggedInUser.username;
+  let signupDate = req.session.loggedInUser.signedUp;
   res.render("user/profile.hbs", { username, signupDate });
 })
 
 router.get("/home", checkAuth, (req, res, next) => {
-  let username = req.session.loggedInUser.username
-  res.render("user/home.hbs", { username });
+  let username = req.session.loggedInUser.username;
+
+  User.findOne({ username: username })
+    .then((user) => {
+      if (user.isMoodChosen) {
+        res.render("user/home-mood-chosen.hbs", { user });
+      }
+      else {
+        res.render("user/home.hbs", { user });
+      }
+    })
+    .catch((err) => {
+      console.log("there was a problem finding the user", err);
+    });
 })
 
 
@@ -83,7 +95,7 @@ router.post('/signup', validateInput, (req, res) => {
       else {
         User.create({ username, password: hash })
           .then(() => {
-            res.render('user/home')
+            res.render("index.hbs", { msg: "signup was successful. please login" })
           })
           .catch(err => next(err))
       }
@@ -123,12 +135,27 @@ router.post('/login', validateInput, (req, res, next) => {
 
 router.post("/mood", (req, res, next) => {
   const { mood } = req.body;
-  // console.log(mood);
+  const loggedInUser = req.session.loggedInUser;
 
-  // TODO: what will we do after getting the mood value?
+  User.findOneAndUpdate({ username: loggedInUser.username }, { mood: mood, isMoodChosen: true })
+    .then((user) => {
+      console.log("user is updated");
 
-  // TODO: not sure of this, we can do something better instead of redirecting 
-  res.redirect("/home");
+      // isMoodChosen is automatically set to false after 10 secs (for testing)
+      // TODO: in the final product, we'll set it to false at the end of the day
+      setTimeout(() => {
+        User.findOneAndUpdate({ username: user.username }, { isMoodChosen: false })
+          .then(() => {
+            console.log("isMoodChosen set to false");
+          })
+          .catch((err) => {
+            console.log("user update failed: ", err);
+          });
+      }, 10000);
+
+      res.redirect("/home");
+    })
+    .catch(err => console.log("finding failed: ", err));
 })
 
 

@@ -20,24 +20,24 @@ const checkAuth = (req, res, next) => {
 
 router.get('/write', checkAuth, (req, res) => {
   let username = req.session.loggedInUser.username
-  res.render('user/write', {username})
+  res.render('user/write', { username })
 });
 
 
 router.get('/entries', checkAuth, (req, res) => {
   let username = req.session.loggedInUser.username
-  Entry.find({ authorId: req.session.loggedInUser._id})
-  .populate('authorId', 'username')
-  .then(entries => {
-    entries.sort((a,b) => {     // show newest entries first
-      if (a.time < b.time) return 1
-      else if (a.time > b.time) return -1
-      else return 0 
+  Entry.find({ authorId: req.session.loggedInUser._id })
+    .populate('authorId', 'username')
+    .then(entries => {
+      entries.sort((a, b) => {     // show newest entries first
+        if (a.time < b.time) return 1
+        else if (a.time > b.time) return -1
+        else return 0
+      })
+      res.render('user/entries', { username, entries })
     })
-    res.render('user/entries', {username, entries})
-  })
-  .catch(err =>
-    console.log(err))
+    .catch(err =>
+      console.log(err))
 });
 
 //TODO this works but throws an AssertionError in the console if you pass in variables and not a hardcoded date 
@@ -48,17 +48,17 @@ router.get('/entries/:yyyy/:mm/:dd', checkAuth, (req, res) => {
   let mm = req.params.mm
   let yyyy = req.params.yyyy
   let query = `${yyyy}-${mm}-${dd}`
-  
-  Entry.find({time: { $gte: query }, authorId: req.session.loggedInUser._id })
-  .then(entries => {
-    entries.sort((a,b) => {
-      if (a.time < b.time) return 1
-      else if (a.time > b.time) return -1
-      else return 0 
+
+  Entry.find({ time: { $gte: query }, authorId: req.session.loggedInUser._id })
+    .then(entries => {
+      entries.sort((a, b) => {
+        if (a.time < b.time) return 1
+        else if (a.time > b.time) return -1
+        else return 0
+      })
+      res.render('user/entries', { entries, username })
     })
-    res.render('user/entries', {entries, username})
-  })
-  .catch(err => {console.log(err)})
+    .catch(err => { console.log(err) })
 })
 
 router.get('/entries/:id', checkAuth, (req, res) => {
@@ -86,7 +86,7 @@ router.get('/entries/edit/:id', checkAuth, (req, res, next) => {
 // POST
 
 router.post('/create', checkAuth, (req, res) => {
-  
+
   const { title, entryBody, tags } = req.body;
   let newEntry = {
     title: title,
@@ -145,7 +145,6 @@ router.post('/search', checkAuth, (req, res) => {
      $or: [ {entryBody: new RegExp(queryStr, 'i') }, {title: new RegExp(queryStr, 'i') } ] 
    })
    .then(results => {
-     console.log(results)
       res.render('user/results', {results, username, queryStr})
    })
    .catch(err => console.log(err))
