@@ -1,10 +1,12 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-  color: #00b7ff;
+  color: #8badbb;
   text-decoration: none;
 }
 
@@ -20,19 +22,29 @@ h1 {
   margin: 20px auto;
   align-items: center;
   justify-content: center;
+  color: rgb(80,80,80)
 }
 
 .form-container {
   width: 500px;
-  border: 1px solid black;
-  margin: 200px auto 0;
+  margin: 20px auto 0;
   padding: 20px;
+}
+
+.form-container button {
+  background: #8badbb;
+  border: #8badbb;
+}
+
+.form-container button:hover {
+  background: rgb(20,20,20);
+  color: white;
 }
 
 /* navbarPartial */
 
 #small-logo {
-  width: 40px;
+  width: 100px;
   margin: 0;
 }
 
@@ -40,6 +52,9 @@ h1 {
   width: 50%;
 }
 
+.navbar {
+  padding: 4em;
+}
 
 /* home page */
 
@@ -52,7 +67,7 @@ h1 {
   border-radius: 10px;
   width: 700px;
   height: 400px;
-  margin: 5% auto;
+  margin: 2% auto;
 }
 
 .mood-query form {
@@ -87,6 +102,20 @@ h1 {
 
 /* general styling */
 
+.welcome {
+  margin: 0;
+  padding: 2em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(124, 124, 124, 0.5);
+  align-items: center;
+}
+.greet {
+  font-size: 2em;
+  color: rgb(109, 109, 109)
+}
 .wrapper {
   width: 50%;
   margin: auto;
@@ -174,11 +203,19 @@ h1 {
 }
 table {
   margin: auto;
-  background: rgb(208, 255, 243)
+  background: rgb(243, 243, 243)
+}
+th {
+  padding: 1em;
 }
 td {
   padding: 1.5em;
 }
 td:hover {
   background: rgb(216, 216, 216);
+}
+
+#quote {
+  padding: 1.5em;
+  color: grey;
 }

@@ -2,11 +2,13 @@
 {{> navbarPartial this}}
 
 <div class="wrapper">
-  <p>Welcome to your Home Page, <span class="username">{{username}}</span></p>
+  <span id="greeting" class="greet"> </span><span class="username greet">{{username}}</span>
+
+  <div id="quote"></div>
+
 </div>
 
-{{!-- positioning of quote to be decided --}}
-<div id="quote"></div>
+
 
 <div class="mood-query">
   <p>How are you feeling today?</p>
@@ -31,8 +33,3 @@
 
 
 <script src="../js/home.js"></script>
-<script>
- 
-  let quote = document.querySelector('#quote');
-
-</script>
