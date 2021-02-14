@@ -19,13 +19,13 @@ const checkAuth = (req, res, next) => {
 // GET
 
 router.get('/write', checkAuth, (req, res) => {
-  let username = req.session.loggedInUser.username
-  res.render('user/write', { username })
+  let user = req.session.loggedInUser;
+  res.render('user/write', { user })
 });
 
 
 router.get('/entries', checkAuth, (req, res) => {
-  let username = req.session.loggedInUser.username
+  let user = req.session.loggedInUser
   Entry.find({ authorId: req.session.loggedInUser._id })
     .populate('authorId', 'username')
     .then(entries => {
@@ -34,7 +34,7 @@ router.get('/entries', checkAuth, (req, res) => {
         else if (a.time > b.time) return -1
         else return 0
       })
-      res.render('user/entries', { username, entries })
+      res.render('user/entries', { user, entries })
     })
     .catch(err =>
       console.log(err))
@@ -43,7 +43,7 @@ router.get('/entries', checkAuth, (req, res) => {
 //TODO this works but throws an AssertionError in the console if you pass in variables and not a hardcoded date 
 
 router.get('/entries/:yyyy/:mm/:dd', checkAuth, (req, res) => {
-  let username = req.session.loggedInUser.username
+  let user = req.session.loggedInUser
   let dd = req.params.dd
   let mm = req.params.mm
   let yyyy = req.params.yyyy
@@ -56,17 +56,17 @@ router.get('/entries/:yyyy/:mm/:dd', checkAuth, (req, res) => {
         else if (a.time > b.time) return -1
         else return 0
       })
-      res.render('user/entries', { entries, username })
+      res.render('user/entries', { entries, user })
     })
     .catch(err => { console.log(err) })
 })
 
 router.get('/entries/:id', checkAuth, (req, res) => {
   let id = req.params.id
-  let username = req.session.loggedInUser.username
+  let user = req.session.loggedInUser;
   Entry.findById(id)
     .then(entry => {
-      res.render('user/entrydetails', { entry, username })
+      res.render('user/entrydetails', { entry, user })
     })
     .catch(err => console.log(err))
 });
@@ -74,10 +74,10 @@ router.get('/entries/:id', checkAuth, (req, res) => {
 
 router.get('/entries/edit/:id', checkAuth, (req, res, next) => {
   let id = req.params.id
-  let username = req.session.loggedInUser.username
+  let user = req.session.loggedInUser;
   Entry.findById(id)
     .then(entry => {
-      res.render('user/edit-form', { entry, username })
+      res.render('user/edit-form', { entry, user })
     })
     .catch(err => console.log(err))
 })
@@ -138,7 +138,7 @@ router.post('/entries/delete/:id', checkAuth, (req, res, next) => {
 
 
 router.post('/search', checkAuth, (req, res) => {
-  let username = req.session.loggedInUser.username
+  let user = req.session.loggedInUser
   let queryStr = req.body.search
   Entry.find(
     {
@@ -147,7 +147,7 @@ router.post('/search', checkAuth, (req, res) => {
     })
     .then(results => {
       console.log(results)
-      res.render('user/results', { results, username, queryStr })
+      res.render('user/results', { results, user, queryStr })
     })
     .catch(err => console.log(err))
 

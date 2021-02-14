@@ -25,14 +25,15 @@
         </li>
         <li class="nav-item searchbar">
           <form class="d-flex" action="/search" method="POST">
-            <input class="form-control mx-2 flex-grow-1" type="search" placeholder="Search" name="search" aria-label="Search">
+            <input class="form-control mx-2 flex-grow-1" type="search" placeholder="Search" name="search"
+              aria-label="Search">
             <button class="btn btn-outline-light" type="submit">Search</button>
           </form>
         </li>
         <li class="nav-item dropdown mx-5">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
-            {{username}}
+            {{user.username}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/profile">My Profile</a></li>

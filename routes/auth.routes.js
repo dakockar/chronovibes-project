@@ -45,15 +45,15 @@ router.get('/logout', (req, res) => {
 })
 
 router.get("/profile", (req, res) => {
-  let username = req.session.loggedInUser.username;
+  let user = req.session.loggedInUser;
   let signupDate = req.session.loggedInUser.signedUp;
-  res.render("user/profile.hbs", { username, signupDate });
+  res.render("user/profile.hbs", { user, signupDate });
 })
 
 router.get("/home", checkAuth, (req, res, next) => {
-  let username = req.session.loggedInUser.username;
+  let user = req.session.loggedInUser;
 
-  User.findOne({ username: username })
+  User.findOne({ username: user.username })
     .then((user) => {
       if (user.isMoodChosen) {
         res.render("user/home-mood-chosen.hbs", { user });
