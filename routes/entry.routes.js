@@ -101,7 +101,7 @@ router.post('/create', checkAuth, (req, res) => {
     })
     .catch(err => {
       console.log(err)
-      res.render('/user/write', { username, msg: 'Something went wrong, please try again' })
+      res.render('/user/write', { user, msg: 'Something went wrong, please try again' })
     })
 
 });

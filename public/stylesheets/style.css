@@ -1,11 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&family=Supermercado+One&display=swap');
 
+html {
+  height: 100%;
+}
+
 body {
   padding: 50px;
   /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
   font-family: 'Raleway';
   margin: 0;
   padding: 0;
+
+
+  height: 100%;
+  background: radial-gradient(circle, rgba(93, 92, 119, 1) 0%, rgba(42, 35, 51, 1) 70%);
+  background-repeat: no-repeat;
 }
 
 a {
@@ -79,7 +88,6 @@ h1 {
   width: 700px;
   height: 400px;
   margin: 2% auto;
-  opacity: 1;
 }
 
 .mood-query form {
@@ -123,7 +131,7 @@ h1 {
   /* border: 1px solid black; */
   font-family: 'Raleway';
   border-radius: 30px;
-  background-color: rgba(89, 52, 133, 0.3);
+  background-color: rgba(255, 255, 255, 0.15);
   font-size: 1.6em;
   color: rgb(42, 35, 51);
   box-shadow: 0 0 5px 5px rgba(42, 35, 51, 0.5);
