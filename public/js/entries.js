@@ -22,7 +22,9 @@ function createCal(year, month) {
     // filled cells
     while (d.getMonth() == month ) {
         let monthVal = d.getMonth()+1 < 10 ? `0${d.getMonth()+1}` : d.getMonth()+1 // this is to always return 2-digit month
-        table += `<td><a href="/entries/${d.getFullYear()}/${monthVal}/${d.getDate()}">${d.getDate()}</a></td>`
+        let dayVal = d.getDate() < 10 ? `0${d.getDate()}` : d.getDate()
+        
+        table += `<td><a href="/entries/${d.getFullYear()}/${monthVal}/${dayVal}">${d.getDate()}</a></td>`
 
         if (getDay(d) % 7 == 6) { // gets to last day of week
             table += '<tr></tr>'

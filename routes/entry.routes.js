@@ -49,7 +49,7 @@ router.get('/entries/:yyyy/:mm/:dd', checkAuth, (req, res) => {
   let yyyy = req.params.yyyy
   let query = `${yyyy}-${mm}-${dd}`
   
-  Entry.find({time: { $gte: query }})
+  Entry.find({time: { $gte: query }, authorId: req.session.loggedInUser._id })
   .then(entries => {
     entries.sort((a,b) => {
       if (a.time < b.time) return 1
@@ -63,9 +63,10 @@ router.get('/entries/:yyyy/:mm/:dd', checkAuth, (req, res) => {
 
 router.get('/entries/:id', checkAuth, (req, res) => {
   let id = req.params.id
+  let username = req.session.loggedInUser.username
   Entry.findById(id)
     .then(entry => {
-      res.render('user/entrydetails', { entry })
+      res.render('user/entrydetails', { entry, username })
     })
     .catch(err => console.log(err))
 });
@@ -136,5 +137,21 @@ router.post('/entries/delete/:id', checkAuth, (req, res, next) => {
 });
 
 
+router.post('/search', checkAuth, (req, res) => {
+  let username = req.session.loggedInUser.username
+  let queryStr = req.body.search
+  Entry.find(
+    { authorId: req.session.loggedInUser._id, 
+     $or: [ {entryBody: new RegExp(req.body.search, 'i') }, {title: new RegExp(req.body.search, 'i') } ] 
+   })
+   .then(results => {
+     console.log(results)
+      res.render('user/results', {results, username, queryStr})
+   })
+   .catch(err => console.log(err))
+
+})
+
 
 module.exports = router;
+
