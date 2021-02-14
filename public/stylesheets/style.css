@@ -71,15 +71,15 @@ h1 {
 /* home page */
 
 .mood-query {
+  transition: 1s;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border: 1px solid black;
-  border-radius: 10px;
   width: 700px;
   height: 400px;
   margin: 2% auto;
+  opacity: 1;
 }
 
 .mood-query form {
@@ -98,16 +98,35 @@ h1 {
   border: none
 }
 
+.mood-btn {
+  transition: 0.5s;
+  opacity: 0.7;
+}
+
+.mood-btn:hover {
+  transition: 0.3s;
+  opacity: 1;
+}
+
+
 .chosen-mood {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  border-radius: 10px;
-  width: 400px;
-  height: 250px;
-  margin: 2% auto;
+  width: 300px;
+  height: 200px;
+  margin: 4% auto;
+}
+
+.mood-bg {
+  /* border: 1px solid black; */
+  font-family: 'Raleway';
+  border-radius: 30px;
+  background-color: rgba(89, 52, 133, 0.3);
+  font-size: 1.6em;
+  color: rgb(42, 35, 51);
+  box-shadow: 0 0 5px 5px rgba(42, 35, 51, 0.5);
 }
 
 /* .hidden {
@@ -241,6 +260,7 @@ h1 {
 #empty {
   padding: 3em;
 }
+
 .username {
   font-weight: 600;
 }
@@ -251,11 +271,13 @@ h1 {
   text-decoration: none;
   color: rgb(152, 132, 170)
 }
+
 .calendar a:hover {
   text-decoration: none;
   color: rgb(63, 63, 63);
   font-weight: bold;
 }
+
 .calendar button {
   border: none;
   outline: none;

@@ -1,5 +1,8 @@
 let quote = document.querySelector('#quote');
 
+// let moodContainer = document.querySelector(".mood-query");
+// let moodButtons = document.querySelectorAll(".mood-btn");
+
 
 // add random quote to home page 
 async function getQuote(elem) {
