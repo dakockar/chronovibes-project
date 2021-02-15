@@ -42,7 +42,8 @@ function createCal(year, month) {
 
     // header.innerHTML = `${mName} ${d.getFullYear()}`
     // elem.innerHTML = table
-    document.querySelector('.cal-month').innerHTML = `${mName} ${d.getFullYear()}`
+    // document.querySelector('.cal-month').innerHTML = `${mName} ${d.getFullYear()}`
+    document.querySelector('.cal-month').innerHTML = `${mName} ${currentYear}`
     document.querySelector('.cal-table').innerHTML = table
     
 }
@@ -85,3 +86,15 @@ function monthName(num)  {
 
 
 
+function calGenerator() {
+    if (currentMonth < 0) {
+        currentMonth = 11
+        --currentYear
+    }
+    if (currentMonth > 11) {
+        ++currentYear
+        currentMonth = 0
+    }
+    createCal(currentYear, currentMonth)
+
+}
