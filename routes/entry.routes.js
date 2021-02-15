@@ -40,23 +40,29 @@ router.get('/entries', checkAuth, (req, res) => {
       console.log(err))
 });
 
-//TODO this works but throws an AssertionError in the console if you pass in variables and not a hardcoded date 
+
 
 router.get('/entries/:yyyy/:mm/:dd', checkAuth, (req, res) => {
   let user = req.session.loggedInUser
   let dd = req.params.dd
   let mm = req.params.mm
   let yyyy = req.params.yyyy
-  let query = `${yyyy}-${mm}-${dd}`
 
-  Entry.find({ time: { $gte: query }, authorId: req.session.loggedInUser._id })
-    .then(entries => {
-      entries.sort((a, b) => {
+  let query= { 
+    $gte: new Date(yyyy, mm - 1, dd, 0, 0, 0),
+    $lte: new Date(yyyy, mm - 1, dd, 23, 59, 59) 
+  }
+
+  Entry.find({ time: query, authorId: req.session.loggedInUser._id })
+    .then(results => {
+      results.sort((a, b) => {
         if (a.time < b.time) return 1
         else if (a.time > b.time) return -1
         else return 0
       })
-      res.render('user/entries', { entries, user })
+      console.log(query)
+      console.log(results)
+      res.render('user/entries-by-date', { results, user, query: `${dd}/${mm}/${yyyy}` })
     })
     .catch(err => { console.log(err) })
 })

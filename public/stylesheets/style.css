@@ -193,6 +193,19 @@ h1 {
 }
 
 
+.write-form {
+  background: radial-gradient(rgb(99, 117, 112), rgb(49, 66, 58));
+  min-height: 90vh;
+}
+
+.write-form h2 {
+  color: white;
+  opacity: .6;
+}
+
+.write-btn {
+  background: rgb(41, 41, 41)!important;
+}
 /* Entry styling */
 
 .entries-page {
@@ -214,19 +227,15 @@ h1 {
 
 }
 
-.singleentrybox {
-  margin: 2em;
-  padding: 2em;
-  color: rgb(211, 211, 211);
-  letter-spacing: .05em;
-  line-height: 1.8em;
-  background: rgba(200, 200, 200, .2);
-  backdrop-filter: blur(6px);
-}
-
 .entrywrapper {
   font-family: 'Raleway';
   width: 50%;
+}
+
+.entrywrapper h2 {
+  color: white;
+  opacity: .7;
+  padding: 1em;
 }
 
 .entrywrapper a {
@@ -254,7 +263,7 @@ h1 {
   backdrop-filter: blur(3px);
 }
 
-.singleentrybox button {
+.entrybox button {
   border-radius: 4px;
   border: none;
   outline: none;
@@ -263,8 +272,7 @@ h1 {
   color: white;
   transition: all .5s ease-in-out;
 }
-
-.singleentrybox button:hover {
+.entrybox button:hover {
   background-color: rgb(20, 20, 20);
   color: rgb(204, 204, 204)
 }
@@ -285,6 +293,7 @@ h1 {
 
 #empty {
   padding: 3em;
+  color: white;
 }
 
 .username {
