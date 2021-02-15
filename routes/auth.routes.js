@@ -190,25 +190,25 @@ router.post('/change-password', (req, res) => {
   }
 
   User.findOne({ username: username })
-  .then(result => {
+    .then(result => {
       bcrypt.compare(currPwd, result.password)
-      .then(isMatch => {
-      if (isMatch) {
-      let salt = bcrypt.genSaltSync(10)
-      let hash = bcrypt.hashSync(newPwd, salt)
+        .then(isMatch => {
+          if (isMatch) {
+            let salt = bcrypt.genSaltSync(10)
+            let hash = bcrypt.hashSync(newPwd, salt)
 
-      User.findOneAndUpdate({ username: req.session.loggedInUser.username,  password: hash })
-      .then(() => {
-        res.render('user/profile', { msg: 'Your password was successfully updated!' })
-      })
-      .catch(err => console.log(err))
-    }
-    else {
-      res.render('user/profile', { msg: 'Please enter your current password correctly' })
-    }
+            User.findOneAndUpdate({ username: req.session.loggedInUser.username, password: hash })
+              .then(() => {
+                res.render('user/profile', { msg: 'Your password was successfully updated!' })
+              })
+              .catch(err => console.log(err))
+          }
+          else {
+            res.render('user/profile', { msg: 'Please enter your current password correctly' })
+          }
+        })
+        .catch(err => console.log(err))
     })
-    .catch(err => console.log(err))
-  })
 })
 
 
@@ -217,10 +217,10 @@ router.post('/delete-user', (req, res) => {
   let id = req.session.loggedInUser._id
 
   User.findByIdAndDelete(id)
-  .then(() => {
-    res.render('index', {msg: 'Your account has been deleted'})
-  })
-  .catch(err => console.log(err))
+    .then(() => {
+      res.render('index', { msg: 'Your account has been deleted' })
+    })
+    .catch(err => console.log(err))
 })
 
 
