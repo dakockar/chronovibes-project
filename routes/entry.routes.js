@@ -48,9 +48,9 @@ router.get('/entries/:yyyy/:mm/:dd', checkAuth, (req, res) => {
   let mm = req.params.mm
   let yyyy = req.params.yyyy
 
-  let query= { 
+  let query = {
     $gte: new Date(yyyy, mm - 1, dd, 0, 0, 0),
-    $lte: new Date(yyyy, mm - 1, dd, 23, 59, 59) 
+    $lte: new Date(yyyy, mm - 1, dd, 23, 59, 59)
   }
 
   Entry.find({ time: query, authorId: req.session.loggedInUser._id })
