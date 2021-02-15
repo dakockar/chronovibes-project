@@ -2,12 +2,24 @@ let quote = document.querySelector('#quote');
 
 let moodContainer = document.querySelector(".mood-query");
 let moodButtons = document.querySelectorAll(".mood-btn");
+let chosenMood = document.querySelector('.chosen-mood');
+let logo = document.querySelector('.navbar-brand');
 
 moodButtons.forEach(btn => {
   btn.addEventListener('click', () => {
-    moodContainer.classList.add('disappear')
+    moodContainer.classList.add('disappear');
+    quote.classList.add('disappear');
+    chosenMood.classList.add('disappear');
   })
 })
+
+logo.addEventListener('click', () => {
+  quote.classList.add('disappear');
+  moodContainer.classList.add('disappear');
+  chosenMood.classList.add('disappear');
+})
+
+
 
 
 // add random quote to home page 

@@ -3,7 +3,7 @@
 <div class="wrapper">
   <span id="greeting" class="greet"> </span><span class="username greet">{{user.username}}</span>
 
-  <div id="quote"></div>
+  <div id="quote" class="disappear"></div>
 
 </div>
 
@@ -31,3 +31,11 @@
 
 
 <script src="../js/home.js"></script>
+<script>
+
+  document.onload =
+    setTimeout(() => {
+      document.querySelector('#quote').classList.remove('disappear');
+      document.querySelector('.mood-query').classList.remove('disappear');
+    }, 800);
+</script>

@@ -55,12 +55,16 @@ router.get("/home", checkAuth, (req, res, next) => {
 
   User.findOne({ username: user.username })
     .then((user) => {
-      if (user.isMoodChosen) {
-        res.render("user/home-mood-chosen.hbs", { user });
-      }
-      else {
-        res.render("user/home.hbs", { user });
-      }
+
+      setTimeout(() => {
+        if (user.isMoodChosen) {
+          res.render("user/home-mood-chosen.hbs", { user });
+        }
+        else {
+          res.render("user/home.hbs", { user });
+        }
+      }, 600)
+
     })
     .catch((err) => {
       console.log("there was a problem finding the user", err);
@@ -153,9 +157,9 @@ router.post("/mood", (req, res, next) => {
           });
       }, 10000);
 
-      setTimeout(() => {
-        res.redirect("/home");
-      }, 600)
+      // setTimeout(() => {
+      res.redirect("/home");
+      // }, 600)
     })
     .catch(err => console.log("finding failed: ", err));
 })
