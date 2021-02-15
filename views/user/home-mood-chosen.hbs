@@ -8,10 +8,17 @@
 </div>
 
 
-<div class="chosen-mood mood-bg">
+<div class="chosen-mood mood-bg disappear">
   <p>Your mood: </p>
   <p>{{user.mood}}</p>
 </div>
 
 
 <script src="../js/home.js"></script>
+
+<script>
+  document.onload =     
+        setTimeout(() => {
+         document.querySelector('.chosen-mood').classList.remove('disappear')
+        }, 700);
+</script>

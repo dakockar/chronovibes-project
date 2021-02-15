@@ -80,7 +80,6 @@ h1 {
 /* home page */
 
 .mood-query {
-  transition: 1s;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -88,6 +87,7 @@ h1 {
   width: 700px;
   height: 400px;
   margin: 2% auto;
+  transition: all 1s ease-in-out;
 }
 
 .mood-query form {
@@ -125,6 +125,7 @@ h1 {
   width: 300px;
   height: 200px;
   margin: 4% auto;
+  transition: all 1s ease-in-out;
 }
 
 .mood-bg {
@@ -135,16 +136,16 @@ h1 {
   font-size: 1.6em;
   color: rgb(42, 35, 51);
   box-shadow: 0 0 5px 5px rgba(42, 35, 51, 0.5);
+  transition: all 1.2s ease-in-out;
 }
 
-/* .hidden {
+.disappear {
+  opacity: 0
+}
+
+.hidden {
   display: none;
 }
-
-.shown {
-  display: flex;
-} */
-
 /* ------------------------ */
 
 .error {
@@ -412,3 +413,5 @@ td:hover {
   padding: 1.5em;
   color: grey;
 }
+
+
