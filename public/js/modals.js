@@ -1,14 +1,15 @@
   // Get the modal
-  var pwdModal = document.getElementById("pwdModal");
-  var delModal = document.getElementById("delModal");
+  let pwdModal = document.getElementById("pwdModal");
+  let delModal = document.getElementById("delModal");
   
   // Get the button that opens the modal
-  var pwdBtn = document.getElementById("pwdBtn");
-  var delBtn = document.getElementById("delBtn");
-  
+  let pwdBtn = document.getElementById("pwdBtn");
+  let delBtn = document.getElementById("delBtn");
+
   // Get the <span> element that closes the modal
-  var pwdSpan = document.getElementsByClassName("close")[0];
-  var delSpan = document.getElementsByClassName("close")[1];
+  let pwdSpan = document.getElementsByClassName("close")[0];
+  let delSpan = document.getElementsByClassName("close")[1];
+
   
   // When the user clicks on the button, open the modal
   pwdBtn.onclick = function() {
@@ -27,12 +28,14 @@
   delSpan.onclick = function() {
     delModal.style.display = "none";
   }
+
   
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
     if (event.target == pwdModal || event.target == delModal) {
       pwdModal.style.display = "none";
       delModal.style.display = "none";
+
     }
   }
   

@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&family=Supermercado+One&display=swap');
 
 html {
-  height: 200%;
+  height: 100vh;
 }
 
 body {
   padding: 50px;
-  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
   font-family: 'Raleway';
   margin: 0;
   padding: 0;
@@ -235,7 +234,7 @@ h1 {
 }
 
 .write-form {
-  min-height: 90vh;
+  max-height: 100vh;
 }
 
 .write-form h2 {
@@ -253,11 +252,11 @@ h1 {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
-  min-height: 100vh;
+  max-height: 100vh;
 }
 
 .single-entry {
-  min-height: 100vh;
+  max-height: 100vh;
 }
 
 .entrywrapper {
@@ -344,7 +343,7 @@ h1 {
   display: flex;
   width: 100%;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .profilebox>div {
@@ -363,6 +362,23 @@ h1 {
   width: 300px;
   padding: .4em;
   border-radius: 6px;
+}
+.profilebox button {
+  border-radius: 4px;
+  background-color: rgb(94, 94, 94);
+  color: white;
+  transition: all .6s ease-in
+}
+.profilebox button:hover {
+  background: white;
+  color: rgb(20,20,20)
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .userinfo>div {
@@ -421,6 +437,7 @@ h1 {
 table {
   margin: 2em;
   padding: 2em;
+  width: 90%;
 }
 
 th {
@@ -431,6 +448,9 @@ th {
 
 td {
   padding-bottom: 1em;
+  text-align: center;
+  font-size: 1.2em;
+  transition: all .3s ease-in;
 }
 
 td:hover {
