@@ -140,7 +140,7 @@ h1 {
 }
 
 .disappear {
-  opacity: 0
+  opacity: 0;
 }
 
 .hidden {
@@ -176,7 +176,7 @@ h1 {
 
 .greet {
   font-size: 2em;
-  color: rgb(109, 109, 109)
+  color: rgb(151, 151, 151)
 }
 
 .wrapper {
@@ -411,7 +411,8 @@ td:hover {
 
 #quote {
   padding: 1.5em;
-  color: grey;
+  color: rgb(190, 190, 190);
+  transition: all 1.3s ease-in-out
 }
 
 

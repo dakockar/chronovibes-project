@@ -2,6 +2,7 @@ let quote = document.querySelector('#quote');
 
 let moodContainer = document.querySelector(".mood-query");
 let moodButtons = document.querySelectorAll(".mood-btn");
+
 let readyToSubmit = false
 
   moodButtons.forEach(btn => {
@@ -12,13 +13,16 @@ let readyToSubmit = false
       }, 2000);
     })
 
-  })
 
-  if (readyToSubmit) {
+      if (readyToSubmit) {
     setTimeout(() => { 
       document.getElementById("mood-form").submit();
       }, 4000);
   }
+
+
+  })
+
 
 
 // add random quote to home page 
