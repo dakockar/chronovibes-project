@@ -216,6 +216,7 @@ h1 {
   width: 80%;
   margin: auto;
   padding: 2em;
+  color:white
 }
 
 .wrapper a {
@@ -232,7 +233,6 @@ h1 {
   border: none;
   padding: .5em;
 }
-
 
 .write-form {
   min-height: 90vh;

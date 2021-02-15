@@ -96,8 +96,8 @@ router.post('/signup', validateInput, (req, res) => {
   const { username, password, confirmPassword } = req.body
   let salt = bcrypt.genSaltSync(10)
   let hash = bcrypt.hashSync(password, salt)
-
-  let regexPw = /(?=.*[0-9])/
+  //at least 5 chars, needs to include a numerical and alphabetic character
+  let regexPw = /(?=.*\d)(?=.*[a-z]).{5,}/
   if (!regexPw.test(password)) {
     res.render('index', { msg: 'password too weak' })
     return
@@ -177,6 +177,50 @@ router.post("/mood", (req, res, next) => {
       res.redirect("/home");
     })
     .catch(err => console.log("finding failed: ", err));
+})
+
+
+router.post('/change-password', (req, res) => {
+  let username = req.session.loggedInUser.username
+  const { newPwd, newPwd2, currPwd } = req.body
+
+  if (newPwd !== newPwd2) {
+    res.render('profile', { msg: 'passwords do not match, please try again' })
+    return
+  }
+
+  User.findOne({ username: username })
+  .then(result => {
+      bcrypt.compare(currPwd, result.password)
+      .then(isMatch => {
+      if (isMatch) {
+      let salt = bcrypt.genSaltSync(10)
+      let hash = bcrypt.hashSync(newPwd, salt)
+
+      User.findOneAndUpdate({ username: req.session.loggedInUser.username,  password: hash })
+      .then(() => {
+        res.render('user/profile', { msg: 'Your password was successfully updated!' })
+      })
+      .catch(err => console.log(err))
+    }
+    else {
+      res.render('user/profile', { msg: 'Please enter your current password correctly' })
+    }
+    })
+    .catch(err => console.log(err))
+  })
+})
+
+
+
+router.post('/delete-user', (req, res) => {
+  let id = req.session.loggedInUser._id
+
+  User.findByIdAndDelete(id)
+  .then(() => {
+    res.render('index', {msg: 'Your account has been deleted'})
+  })
+  .catch(err => console.log(err))
 })
 
 
