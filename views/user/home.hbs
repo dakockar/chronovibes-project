@@ -8,10 +8,9 @@
 </div>
 
 
-
 <div class="mood-query mood-bg">
   <p>How are you feeling today?</p>
-  <form action="/mood" method="POST">
+  <form action="/mood" method="POST" id="mood-form" onsubmit="return submitIt();">
     <button class="mood-btn" type="submit" name="mood" value="great">
       <img src="/images/great.png" alt="great">
     </button>
