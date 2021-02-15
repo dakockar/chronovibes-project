@@ -181,15 +181,15 @@ router.post("/mood", (req, res, next) => {
 
 
 router.post('/change-password', (req, res) => {
-  let username = req.session.loggedInUser.username
+  let user = req.session.loggedInUser
   const { newPwd, newPwd2, currPwd } = req.body
 
   if (newPwd !== newPwd2) {
-    res.render('profile', { msg: 'passwords do not match, please try again' })
+    res.render('profile', {user,  msg: 'passwords do not match, please try again' })
     return
   }
 
-  User.findOne({ username: username })
+  User.findOne({ username: user.username })
     .then(result => {
       bcrypt.compare(currPwd, result.password)
         .then(isMatch => {
@@ -199,12 +199,12 @@ router.post('/change-password', (req, res) => {
 
             User.findOneAndUpdate({ username: req.session.loggedInUser.username, password: hash })
               .then(() => {
-                res.render('user/profile', { msg: 'Your password was successfully updated!' })
+                res.render('user/profile', { user, msg: 'Your password was successfully updated!' })
               })
               .catch(err => console.log(err))
           }
           else {
-            res.render('user/profile', { msg: 'Please enter your current password correctly' })
+            res.render('user/profile', { user, msg: 'Please enter your current password correctly' })
           }
         })
         .catch(err => console.log(err))
@@ -215,7 +215,7 @@ router.post('/change-password', (req, res) => {
 
 router.post('/delete-user', (req, res) => {
   let id = req.session.loggedInUser._id
-
+  
   User.findByIdAndDelete(id)
     .then(() => {
       res.render('index', { msg: 'Your account has been deleted' })
