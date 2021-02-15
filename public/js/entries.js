@@ -40,9 +40,6 @@ function createCal(year, month) {
 
     table += '</tr></table>'
 
-    // header.innerHTML = `${mName} ${d.getFullYear()}`
-    // elem.innerHTML = table
-    // document.querySelector('.cal-month').innerHTML = `${mName} ${d.getFullYear()}`
     document.querySelector('.cal-month').innerHTML = `${mName} ${currentYear}`
     document.querySelector('.cal-table').innerHTML = table
     
