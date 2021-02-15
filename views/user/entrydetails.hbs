@@ -1,23 +1,23 @@
-
 {{> navbarPartial this}}
 <div class="single-entry">
-<div class="wrapper">
+  <div class="wrapper">
 
-  <a href="/entries">« entries</a>
-  <div class="entrybox">
-    <h1>{{entry.title}}</h1>
-    <div class="entry-date">{{dateFormat entry.time "dddd, MMMM Do YYYY, h:mm:ss a"}}</div>
-    <div class="entry-body">{{entry.entryBody}}</div>
-    <div class="tags">{{entry.tags}}</div>
+    <a href="/entries">« entries</a>
+    <div class="entrybox">
+      <h1>{{entry.title}}</h1>
+      <div class="entry-date">{{dateFormat entry.time "dddd, MMMM Do YYYY, h:mm:ss a"}}</div>
+      <div class="entry-body">{{entry.entryBody}}</div>
+      <div class="tags">{{entry.tags}}</div>
 
-        <div class="btns">
-            <a href="/entries/edit/{{entry._id}}">
-              <button type="button">edit</button>
-            </a>
-            <form action="/entries/delete/{{entry._id}}" method="POST" onSubmit="if(!confirm('Delete entry?')){return false;}">
-              <button type="submit">delete</button>
-            </form>
-          </div>
+      <div class="btns">
+        <a href="/entries/edit/{{entry._id}}">
+          <button type="button">edit</button>
+        </a>
+        <form action="/entries/delete/{{entry._id}}" method="POST"
+          onSubmit="if(!confirm('Delete entry?')){return false;}">
+          <button type="submit">delete</button>
+        </form>
+      </div>
+    </div>
   </div>
-</div>
 </div>

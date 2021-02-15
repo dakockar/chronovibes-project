@@ -34,10 +34,13 @@ router.get('/entries', checkAuth, (req, res) => {
         else if (a.time > b.time) return -1
         else return 0
       })
+
+      for (let entry of entries) {
+        entry.entryBody = entry.entryBody.substring(0, 180) + " ...";
+      }
       res.render('user/entries', { user, entries })
     })
-    .catch(err =>
-      console.log(err))
+    .catch(err => console.log(err))
 });
 
 
