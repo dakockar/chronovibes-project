@@ -7,10 +7,26 @@
 
 </div>
 
-
 <div class="chosen-mood mood-bg disappear">
   <p>Your mood: </p>
   <p>{{user.mood}}</p>
+</div>
+
+
+<div class="playlist wrapper">
+  <p>maybe you wanna try one of these playlists:</p>
+  <ul>
+    {{#each playlists}}
+    <li>
+      <p>
+        <a target="_blank" href="{{this.external_urls.spotify}}">{{this.name}}</a>
+      </p>
+      <p>
+        <img class="playlist" src="{{this.images.0.url}}" alt="">
+      </p>
+    </li>
+    {{/each}}
+  </ul>
 </div>
 
 

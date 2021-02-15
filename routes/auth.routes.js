@@ -1,6 +1,16 @@
 const router = require('express').Router()
 const bcrypt = require('bcryptjs')
 const User = require('../models/User.model.js')
+const SpotifyWebApi = require('spotify-web-api-node');
+const spotifyApi = new SpotifyWebApi({
+  clientId: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
+  // redirectUri: 'http://www.example.com/callback'
+});
+spotifyApi
+  .clientCredentialsGrant()
+  .then(data => spotifyApi.setAccessToken(data.body['access_token']))
+  .catch(error => console.log('Something went wrong when retrieving an access token', error));
 
 
 
@@ -58,7 +68,14 @@ router.get("/home", checkAuth, (req, res, next) => {
 
       setTimeout(() => {
         if (user.isMoodChosen) {
-          res.render("user/home-mood-chosen.hbs", { user });
+          spotifyApi.searchPlaylists(user.mood)
+            .then((data) => {
+              let playlists = data.body.playlists.items;
+              res.render("user/home-mood-chosen.hbs", { user, playlists });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
         else {
           res.render("user/home.hbs", { user });
@@ -157,9 +174,7 @@ router.post("/mood", (req, res, next) => {
           });
       }, 10000);
 
-      // setTimeout(() => {
       res.redirect("/home");
-      // }, 600)
     })
     .catch(err => console.log("finding failed: ", err));
 })

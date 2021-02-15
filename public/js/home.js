@@ -20,8 +20,6 @@ logo.addEventListener('click', () => {
 })
 
 
-
-
 // add random quote to home page 
 async function getQuote(elem) {
   const rand = Math.floor(Math.random() * 1500)
