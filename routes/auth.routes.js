@@ -153,7 +153,9 @@ router.post("/mood", (req, res, next) => {
           });
       }, 10000);
 
-      res.redirect("/home");
+      setTimeout(() => {
+        res.redirect("/home");
+      }, 600)
     })
     .catch(err => console.log("finding failed: ", err));
 })
