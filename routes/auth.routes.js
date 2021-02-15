@@ -5,7 +5,6 @@ const SpotifyWebApi = require('spotify-web-api-node');
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  // redirectUri: 'http://www.example.com/callback'
 });
 spotifyApi
   .clientCredentialsGrant()
@@ -185,7 +184,7 @@ router.post('/change-password', (req, res) => {
   const { newPwd, newPwd2, currPwd } = req.body
 
   if (newPwd !== newPwd2) {
-    res.render('profile', {user,  msg: 'passwords do not match, please try again' })
+    res.render('profile', { user, msg: 'passwords do not match, please try again' })
     return
   }
 
@@ -215,7 +214,7 @@ router.post('/change-password', (req, res) => {
 
 router.post('/delete-user', (req, res) => {
   let id = req.session.loggedInUser._id
-  
+
   User.findByIdAndDelete(id)
     .then(() => {
       res.render('index', { msg: 'Your account has been deleted' })
