@@ -23,15 +23,25 @@
             <li><a class="dropdown-item" href="/entries">My Entries</a></li>
           </ul>
         </li>
-        <li class="nav-item searchbar">
-          <form class="d-flex" action="/search" method="POST">
-            <input class="form-control mx-2 flex-grow-1" type="search" placeholder="Search" name="search"
+        <li class="nav-item search-li">
+          <form class="search-form" action="/search" method="POST">
+            <input class="form-control w-50" type="search" placeholder="Search" name="search"
               aria-label="Search">
-            <button class="btn btn-outline-light" type="submit">Search</button>
+            <div>
+              <div class="form-check">
+                <input type="radio" name="entryType" id="my" value="my" checked>
+                <label for="my">my entries</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" name="entryType" id="all" value="all">
+                <label for="all">all entries</label>
+              </div>
+            </div>
+            <button class="btn btn-outline-light search-btn" type="submit">Search</button>
           </form>
         </li>
-        <li class="nav-item dropdown mx-5">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+        <li class="nav-item dropdown mx-3">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             {{user.username}}
           </a>
