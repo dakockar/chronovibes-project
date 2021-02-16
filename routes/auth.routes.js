@@ -181,6 +181,7 @@ router.post("/mood", (req, res, next) => {
 
 router.post('/change-password', (req, res) => {
   let user = req.session.loggedInUser
+  let id = req.session.loggedInUser._id
   const { newPwd, newPwd2, currPwd } = req.body
 
   if (newPwd !== newPwd2) {
@@ -196,7 +197,7 @@ router.post('/change-password', (req, res) => {
             let salt = bcrypt.genSaltSync(10)
             let hash = bcrypt.hashSync(newPwd, salt)
 
-            User.findOneAndUpdate({ username: user.username, password: hash })
+            User.findByIdAndUpdate(id, { password: hash })
               .then(() => {
                 res.render('user/profile', { user, msg: 'Your password was successfully updated!' })
               })
