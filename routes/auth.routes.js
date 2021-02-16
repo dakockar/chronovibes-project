@@ -196,7 +196,7 @@ router.post('/change-password', (req, res) => {
             let salt = bcrypt.genSaltSync(10)
             let hash = bcrypt.hashSync(newPwd, salt)
 
-            User.findOneAndUpdate({ username: req.session.loggedInUser.username, password: hash })
+            User.findOneAndUpdate({ username: user.username, password: hash })
               .then(() => {
                 res.render('user/profile', { user, msg: 'Your password was successfully updated!' })
               })

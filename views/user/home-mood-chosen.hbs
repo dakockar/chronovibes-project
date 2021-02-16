@@ -13,7 +13,7 @@
 </div>
 
 
-<div class="playlist wrapper">
+<div class="playlist wrapper disappear">
   <p>maybe you wanna try one of these playlists:</p>
   <ul>
     {{#each playlists}}
@@ -38,5 +38,6 @@
     setTimeout(() => {
       document.querySelector('#quote').classList.remove('disappear');
       document.querySelector('.chosen-mood').classList.remove('disappear');
+      document.querySelector('.playlist').classList.remove('disappear');
     }, 800);
 </script>

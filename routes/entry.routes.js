@@ -34,7 +34,7 @@ router.get('/entries', checkAuth, (req, res) => {
         else if (a.time > b.time) return -1
         else return 0
       })
-
+      // show a preview of entries only 
       for (let entry of entries) {
         entry.entryBody = entry.entryBody.substring(0, 180) + " ...";
       }
@@ -155,6 +155,12 @@ router.post('/search', checkAuth, (req, res) => {
       $or: [{ entryBody: new RegExp(queryStr, 'i') }, { title: new RegExp(queryStr, 'i') }]
     })
     .then(results => {
+      for (let entry of results) {
+        let index = entry.entryBody.toLowerCase().indexOf(queryStr.toLowerCase());
+        entry.entryBody = entry.entryBody.substring(index - 50, index + 130) + " ...";
+        // TODO: highlight the search term in the result
+
+      }
       res.render('user/results', { results, user, queryStr })
     })
     .catch(err => console.log(err))
