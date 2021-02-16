@@ -21,7 +21,9 @@
   padding: 20px;
   width: 25%; /* Could be more or less, depending on screen size */
 }
-
+.modal-content p {
+  color: rgb(220,220,220)
+}
 /* The Close Button */
 .close {
   color: rgb(255, 255, 255);

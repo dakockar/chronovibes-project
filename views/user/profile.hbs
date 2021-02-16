@@ -13,14 +13,13 @@
       <div>Joined:<p class="signup-date"> {{dateFormat signupDate "MMMM Do YYYY"}}</p>
       </div>
       <div class="modals">
-      <!-- Trigger/Open Password Modal -->
+      <!-- Trigger/Open Modals -->
       <div class="profilebtns">
           <button id="pwdBtn" >Change password</button>
           <button id="delBtn" >Delete account</button>
-    </div>
-          <!-- The Modal -->
+      </div>
+          <!-- Password change Modal -->
           <div id="pwdModal" class="modal">
-            <!-- Modal content -->
             <div class="modal-content">
               <span class="close">&times;</span>
               <p>
@@ -42,19 +41,13 @@
                 </form>
               </p>
             </div>
-
           </div>
           {{!-- End of modal --}}
-        
         </div>
+
       <div>
-
-        <!-- Trigger/Open The Deletion Modal -->
-
-
-          <!-- The Modal -->
+          <!-- Deletion Modal -->
           <div id="delModal" class="modal">
-            <!-- Modal content -->
             <div class="modal-content">
               <span class="close">&times;</span>
               <p>
@@ -62,25 +55,14 @@
                 <form action="/delete-user" method="POST"><button>Yes, please</button></form>
               </p>
             </div>
-
           </div>
         </div>
     </div>
-
-    <div class="calendar">
-      <div class="cal-header">
-        <div class="cal-month"></div>
-        <div>
-          <button class="browse" onclick="calGenerator(currentYear, --currentMonth)">&#60;</button>
-          <button class="browse" onclick="calGenerator(currentYear, ++currentMonth)">&#62;</button>
-        </div>
-      </div>
-      <div class="cal-table"></div>
-    </div>
+{{> calendarPartial this}}
 
   </div>
 
 </div>
 
-<script src="../js/entries.js"></script>
+<script src="../js/calendar.js"></script>
 <script src="../js/modals.js"></script>

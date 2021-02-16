@@ -353,6 +353,7 @@ h1 {
   margin-right: 1em;
 }
 
+
 #empty {
   padding: 3em;
   color: white;
@@ -423,7 +424,7 @@ h1 {
   align-items: center;
 }
 
-.userinfo>div {
+.userinfo > div {
   margin-top: 1em;
 }
 

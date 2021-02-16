@@ -6,22 +6,9 @@
 
     {{#if entries}}
     {{#each entries}}
-    <div class="entrybox">
-
-      <h1><a href="/entries/{{this._id}}">{{this.title}}</a></h1>
-      <div class="entry-date">{{dateFormat this.time "MMMM Do YYYY"}}</div>
-      <div class="entry-body">{{this.entryBody}}</div>
-
-{{#if this.tags}}
-  <ul>
-    {{#each tags}}
-    <li><a href="/entries/search/{{this}}">#{{this}}</a></li>
-    {{/each}}
-  </ul>
-{{/if}}
-
-    </div>
-
+    
+    {{> entryPartial this}}
+    
     {{/each}}
     {{else}}
     <div id="empty">No entries</div>
