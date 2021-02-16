@@ -110,16 +110,16 @@ router.get('/entries/search/:tag', checkAuth, (req, res) => {
 // POST
 
 router.post('/create', checkAuth, (req, res) => {
-
+  let user = req.session.loggedInUser;
   const { title, entryBody, tags } = req.body;
-  let tagsArr = tags.split(', ')
+  let tagsArr = tags.length > 0 ? tags.split(', ') : []
   let newEntry = {
     title: title,
     entryBody: entryBody,
     tags: tagsArr,
     authorId: req.session.loggedInUser._id
   };
-
+  console.log(newEntry)
   Entry.create(newEntry)
     .then((item) => {
       res.redirect('/entries')

@@ -1,3 +1,4 @@
+
 {{> navbarPartial this}}
 <div class="entries-page">
 
@@ -11,11 +12,14 @@
       <div class="entry-date">{{dateFormat this.time "MMMM Do YYYY"}}</div>
       <div class="entry-body">{{this.entryBody}}</div>
 
+{{#if this.tags}}
   <ul>
     {{#each tags}}
     <li><a href="/entries/search/{{this}}">#{{this}}</a></li>
     {{/each}}
   </ul>
+{{/if}}
+
     </div>
 
     {{/each}}
