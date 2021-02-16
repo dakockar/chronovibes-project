@@ -31,8 +31,8 @@ async function getQuote(elem) {
     author: data[rand].author,
     quote: data[rand].text
   }
-
-  elem.innerHTML = `${quote.quote} <br>- ${quote.author}`
+  let authorName = quote.author == null ? 'Anonymous' : quote.author
+  elem.innerHTML = `${quote.quote} <br>- ${authorName}`
 
 }
 

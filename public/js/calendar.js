@@ -83,7 +83,12 @@ function monthName(num)  {
 
 
 
-function calGenerator() {
+function calGenerator(bool) {
+    if(bool) {
+        --currentMonth
+    }
+    else ++currentMonth
+
     if (currentMonth < 0) {
         currentMonth = 11
         --currentYear
