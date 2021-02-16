@@ -21,11 +21,17 @@
     </div>
 
 
+
     {{#if this.tags}}
-    <div class="tags">{{this.tags}}</div>
+    <ul>
+      {{#each tags}}
+      <li><a href="/entries/search/{{this}}">#{{this}}</a></li>
+      {{/each}}
+    </ul>
     {{/if}}
 
   </div>
+
   {{/each}}
 
   {{else}}

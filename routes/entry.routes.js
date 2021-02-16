@@ -38,7 +38,8 @@ router.get('/entries', checkAuth, (req, res) => {
       for (let entry of entries) {
         entry.entryBody = entry.entryBody.substring(0, 180) + " ...";
       }
-      res.render('user/entries', { user, entries })
+  
+      res.render('user/entries', { user, entries, tags: entries.tags })
     })
     .catch(err => console.log(err))
 });
@@ -63,8 +64,6 @@ router.get('/entries/:yyyy/:mm/:dd', checkAuth, (req, res) => {
         else if (a.time > b.time) return -1
         else return 0
       })
-      console.log(query)
-      console.log(results)
       res.render('user/entries-by-date', { results, user, query: `${dd}/${mm}/${yyyy}` })
     })
     .catch(err => { console.log(err) })
@@ -75,7 +74,7 @@ router.get('/entries/:id', checkAuth, (req, res) => {
   let user = req.session.loggedInUser;
   Entry.findById(id)
     .then(entry => {
-      res.render('user/entrydetails', { entry, user })
+      res.render('user/entrydetails', { entry, user, tags: entry.tags })
     })
     .catch(err => console.log(err))
 });
@@ -92,18 +91,35 @@ router.get('/entries/edit/:id', checkAuth, (req, res, next) => {
 })
 
 
+router.get('/entries/search/:tag', checkAuth, (req, res) => {
+  let queryStr = req.params.tag
+  let user = req.session.loggedInUser;
+
+  Entry.find({
+    authorId: user._id,
+    tags: new RegExp(queryStr, 'i')
+  })
+  .then(results => {
+   
+    res.render('user/results', { queryStr, results, user })
+  })
+  .catch(err => console.log(err))
+})
+
+
 // POST
 
 router.post('/create', checkAuth, (req, res) => {
-
+  let user = req.session.loggedInUser;
   const { title, entryBody, tags } = req.body;
+  let tagsArr = tags.length > 0 ? tags.split(', ') : []
   let newEntry = {
     title: title,
     entryBody: entryBody,
-    tags: tags,
+    tags: tagsArr,
     authorId: req.session.loggedInUser._id
   };
-
+  console.log(newEntry)
   Entry.create(newEntry)
     .then((item) => {
       res.redirect('/entries')

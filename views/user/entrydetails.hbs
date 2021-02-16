@@ -9,7 +9,15 @@
       <h1>{{entry.title}}</h1>
       <div class="entry-date">{{dateFormat entry.time "dddd, MMMM Do YYYY, h:mm:ss a"}}</div>
       <div class="entry-body">{{entry.entryBody}}</div>
-      <div class="tags">{{entry.tags}}</div>
+      
+    {{#if entry.tags}}
+      <ul>
+        {{#each tags}}
+        <li><a href="/entries/search/{{this}}">#{{this}}</a></li>
+        {{/each}}
+      </ul>
+    {{/if}}
+   
 
       <div class="btns">
         <a href="/entries/edit/{{entry._id}}">
@@ -20,7 +28,7 @@
         </div>
       </div>
     </div>
-
+     </div>
       <div id="delEntryModal" class="modal">
         <div class="modal-content">
           <span id="closeEntry">&times;</span>
