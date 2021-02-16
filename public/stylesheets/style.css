@@ -327,6 +327,17 @@ h1 {
   margin: 1.5em 0;
 }
 
+.entrybox ul {
+  list-style-type: none;
+}
+
+.entrybox li {
+  display: inline;
+  border: 1px rgba(222,222,222,.4) solid;
+  border-radius: 3px;
+  padding: .5em;
+  margin-right: 1em;
+}
 
 #empty {
   padding: 3em;

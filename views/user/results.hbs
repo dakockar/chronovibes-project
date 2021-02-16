@@ -14,9 +14,12 @@
     <div class="entry-date">{{dateFormat this.time "MMMM Do YYYY"}}</div>
     <div class="entry-body">{{this.entryBody}}</div>
 
-    {{#if this.tags}}
-    <div class="tags">{{this.tags}}</div>
-    {{/if}}
+   
+        <ul>
+    {{#each tags}}
+     <li><a href="/entries/search/{{this}}">#{{this}}</a></li>
+    {{/each}}
+      </ul>
 
 
   </div>

@@ -9,7 +9,12 @@
       <h1>{{entry.title}}</h1>
       <div class="entry-date">{{dateFormat entry.time "dddd, MMMM Do YYYY, h:mm:ss a"}}</div>
       <div class="entry-body">{{entry.entryBody}}</div>
-      <div class="tags">{{entry.tags}}</div>
+   
+        <ul>
+    {{#each tags}}
+     <li><a href="/entries/search/{{this}}">#{{this}}</a></li>
+    {{/each}}
+      </ul>
 
       <div class="btns">
         <a href="/entries/edit/{{entry._id}}">
