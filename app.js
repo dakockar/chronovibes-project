@@ -18,6 +18,28 @@ hbs.registerPartials(__dirname + "/views/partials");
 // Dateformat helpers
 hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 
+// custom helpers
+
+hbs.registerHelper('splitBefore', (str, word) => {
+  return "..." + str.split(word)[0];
+});
+
+hbs.registerHelper('splitAfter', (str, word) => {
+  // let i = str.toLowerCase().indexOf(word.toLowerCase());
+
+  let i = str.indexOf(word);
+
+  return str.substring(i + word.length) + "...";
+});
+
+// hbs.registerHelper('highlight', (str, word) => {
+//   let arr = str.split(word);
+
+//   let output = arr.join(`<span class='highlighted'> ${word} </span>`);
+//   return output;
+// })
+
+
 var Handlebars = require("handlebars");
 var MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);

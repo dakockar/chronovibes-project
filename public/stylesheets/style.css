@@ -334,6 +334,12 @@ h1 {
   margin: 1.5em 0;
 }
 
+.highlighted {
+  background-color: rgba(255, 187, 0, 0.35);
+  font-weight: 800;
+  padding: 0 2px;
+  margin: 0;
+}
 
 #empty {
   padding: 3em;

@@ -156,15 +156,12 @@ router.post('/search', checkAuth, (req, res) => {
     })
     .then(results => {
       for (let entry of results) {
-        let index = entry.entryBody.toLowerCase().indexOf(queryStr.toLowerCase());
-        entry.entryBody = entry.entryBody.substring(index - 50, index + 130) + " ...";
-        // TODO: highlight the search term in the result
-
+        let index = entry.entryBody.indexOf(queryStr);
+        entry.entryBody = entry.entryBody.substring(index - 50, index + 130);
       }
       res.render('user/results', { results, user, queryStr })
     })
     .catch(err => console.log(err))
-
 })
 
 

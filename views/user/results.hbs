@@ -2,22 +2,28 @@
 
 
 <div class="wrapper">
-{{#if results}}
+  {{#if results}}
 
-<h1>results for "{{queryStr}}"</h1>
+  <h1>results for "{{queryStr}}"</h1>
 
-{{#each results}}
+  {{#each results}}
 
   <div class="entrybox">
 
     <h1><a href="/entries/{{this._id}}">{{this.title}}</a></h1>
     <div class="entry-date">{{dateFormat this.time "MMMM Do YYYY"}}</div>
-    <div class="entry-body">{{this.entryBody}}</div>
+
+
+    <div class="entry-body">
+      {{splitBefore this.entryBody ../queryStr}}
+      <span class="highlighted">{{../queryStr}}</span>
+      {{splitAfter this.entryBody ../queryStr}}
+    </div>
+
 
     {{#if this.tags}}
     <div class="tags">{{this.tags}}</div>
     {{/if}}
-
 
   </div>
   {{/each}}
