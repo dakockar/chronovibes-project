@@ -5,18 +5,21 @@
   <div class="wrapper">
 
     <a href="/entries">« entries</a>
+
     <div class="entrybox">
+      
       <h1>{{entry.title}}</h1>
+      
       <div class="entry-date">{{dateFormat entry.time "dddd, MMMM Do YYYY, h:mm:ss a"}}</div>
       <div class="entry-body">{{entry.entryBody}}</div>
       
-    {{#if entry.tags}}
-      <ul>
+      {{#if entry.tags}}
+        <ul>
         {{#each tags}}
-        <li><a href="/entries/search/{{this}}">#{{this}}</a></li>
+          <li><a href="/entries/search/{{this}}">#{{this}}</a></li>
         {{/each}}
-      </ul>
-    {{/if}}
+        </ul>
+      {{/if}}
    
 
       <div class="btns">

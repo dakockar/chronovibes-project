@@ -121,7 +121,7 @@ router.post('/create', checkAuth, (req, res) => {
     title,
     entryBody,
     tags: tagsArr,
-    authorId: req.session.loggedInUser._id,
+    authorId: user._id,
     isPublic
   };
   // console.log(newEntry)
@@ -142,10 +142,11 @@ router.post('/entries/edit/:id', checkAuth, (req, res, next) => {
 
   let id = req.params.id
   const { title, entryBody, tags } = req.body;
+  let tagsArr = tags.length > 0 ? tags.split(', ') : []
   let editedEntry = {
     title: title,
     entryBody: entryBody,
-    tags: tags
+    tags: tagsArr
   };
 
   Entry.findByIdAndUpdate(id, editedEntry)
