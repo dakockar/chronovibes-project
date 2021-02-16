@@ -36,9 +36,9 @@ router.get('/entries', checkAuth, (req, res) => {
       })
       // show a preview of entries only 
       for (let entry of entries) {
-        entry.entryBody = entry.entryBody.substring(0, 180) + " ...";
+        entry.entryBody = entry.entryBody.substring(0, 180) + "...";
       }
-  
+
       res.render('user/entries', { user, entries, tags: entries.tags })
     })
     .catch(err => console.log(err))
@@ -99,11 +99,11 @@ router.get('/entries/search/:tag', checkAuth, (req, res) => {
     authorId: user._id,
     tags: new RegExp(queryStr, 'i')
   })
-  .then(results => {
-   
-    res.render('user/results', { queryStr, results, user })
-  })
-  .catch(err => console.log(err))
+    .then(results => {
+
+      res.render('user/results', { queryStr, results, user })
+    })
+    .catch(err => console.log(err))
 })
 
 
@@ -111,17 +111,23 @@ router.get('/entries/search/:tag', checkAuth, (req, res) => {
 
 router.post('/create', checkAuth, (req, res) => {
   let user = req.session.loggedInUser;
-  const { title, entryBody, tags } = req.body;
+  const { title, entryBody, tags, public } = req.body;
+  let isPublic = false;
+
+  if (public === "on") isPublic = true;
+
   let tagsArr = tags.length > 0 ? tags.split(', ') : []
   let newEntry = {
-    title: title,
-    entryBody: entryBody,
+    title,
+    entryBody,
     tags: tagsArr,
-    authorId: req.session.loggedInUser._id
+    authorId: req.session.loggedInUser._id,
+    isPublic
   };
-  console.log(newEntry)
+  // console.log(newEntry)
+
   Entry.create(newEntry)
-    .then((item) => {
+    .then(() => {
       res.redirect('/entries')
     })
     .catch(err => {
@@ -165,12 +171,18 @@ router.post('/entries/delete/:id', checkAuth, (req, res, next) => {
 router.post('/search', checkAuth, (req, res) => {
   let user = req.session.loggedInUser
   let queryStr = req.body.search
+
+
   Entry.find(
     {
-      authorId: req.session.loggedInUser._id,
+      // authorId: req.session.loggedInUser._id,
       $or: [{ entryBody: new RegExp(queryStr, 'i') }, { title: new RegExp(queryStr, 'i') }]
     })
     .then(results => {
+
+      // TODO: search by public/private/all entries
+
+
       for (let entry of results) {
         let index = entry.entryBody.indexOf(queryStr);
         entry.entryBody = entry.entryBody.substring(index - 50, index + 130);

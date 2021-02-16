@@ -10,7 +10,6 @@ body {
   margin: 0;
   padding: 0;
 
-
   height: 100%;
   background: radial-gradient(circle, rgba(93, 92, 119, 1) 0%, rgba(42, 35, 51, 1) 70%);
   background-repeat: no-repeat;
@@ -27,7 +26,6 @@ h1 {
 }
 
 /* # sourceMappingURL=style.css.map */
-
 
 .user-form {
   width: 300px;
@@ -56,15 +54,6 @@ h1 {
 
 /* navbarPartial */
 
-#small-logo {
-  width: 120px;
-  margin: 0;
-}
-
-.searchbar {
-  width: 50%;
-}
-
 .navbar {
   padding: 4em;
   font-family: 'Raleway';
@@ -72,10 +61,54 @@ h1 {
   font-weight: bold;
 }
 
+#small-logo {
+  width: 120px;
+  margin: 0;
+}
+
+.search-li {
+  width: 80%;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
+.search-btn {
+  margin-left: 40px;
+}
+
+.navbar label {
+  color: grey;
+  font-weight: 500;
+  font-size: 0.8em;
+}
+
+.form-check {
+  margin: 0 10px;
+}
+
 .nav-tabs button {
   text-transform: uppercase;
   letter-spacing: .2em;
 }
+
+.logout {
+  color: grey;
+  text-decoration: none;
+  font-weight: 400;
+  transition: 0.2s ease-in;
+}
+
+.logout:hover {
+  transition: 0.2s ease-in;
+  color: beige;
+  opacity: 0.8;
+}
+
 
 /* home page */
 
@@ -294,6 +327,8 @@ h1 {
 }
 
 .entrybox {
+  display: flex;
+  flex-direction: column;
   margin: 2em;
   padding: 2em;
   color: rgb(211, 211, 211);
@@ -352,6 +387,16 @@ h1 {
   padding: .5em;
   margin-right: 1em;
 }
+
+
+.isPublic {
+  background-color: rgba(230, 230, 250, 0.2);
+  border-radius: 3px;
+  padding: 0 .5em;
+  align-self: flex-end;
+  color: rgb(211, 211, 211);
+}
+
 
 #empty {
   padding: 3em;

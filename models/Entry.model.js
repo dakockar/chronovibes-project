@@ -16,7 +16,10 @@ const entrySchema = new Schema({
     type: Date,
     default: Date.now
   },
-  public: Boolean,
+  isPublic: {
+    type: Boolean,
+    default: false
+  },
   authorId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
