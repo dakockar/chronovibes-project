@@ -1,3 +1,5 @@
+   <link rel="stylesheet" href="/stylesheets/modals.css" />
+
 {{> navbarPartial this}}
 <div class="single-entry">
   <div class="wrapper">
@@ -13,11 +15,46 @@
         <a href="/entries/edit/{{entry._id}}">
           <button type="button">edit</button>
         </a>
-        <form action="/entries/delete/{{entry._id}}" method="POST"
-          onSubmit="if(!confirm('Delete entry?')){return false;}">
-          <button type="submit">delete</button>
-        </form>
+        <div>
+          <button id="delEntry">delete</button>
+        </div>
       </div>
     </div>
+
+      <div id="delEntryModal" class="modal">
+        <div class="modal-content">
+          <span id="closeEntry">&times;</span>
+            <p>
+              <p>Delete entry permanently?</p>
+              <form action="/entries/delete/{{entry._id}}" method="POST"><button>Delete</button></form>
+              </p>
+            </div>
+
+          </div>
   </div>
+
+  
 </div>
+      
+<script>
+
+  let delEntryModal = document.getElementById("delEntryModal")
+  let delEntry = document.getElementById("delEntry");
+  let delEntrySpan = document.getElementById("closeEntry")
+  
+  delEntry.onclick = function() {
+    delEntryModal.style.display = "block";
+  }
+  
+  delEntrySpan.onclick = function() {
+    delEntryModal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == delEntryModal) {
+      delEntryModal.style.display = "none"
+    }
+  }
+  
+
+</script>

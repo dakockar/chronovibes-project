@@ -10,12 +10,14 @@
 
     <div class="userinfo">
       <h1>{{user.username}}</h1>
-      <div>Joined:<p class="signup-date"> {{dateFormat signupDate "dddd, MMMM Do YYYY, h:mm:ss a"}}</p>
+      <div>Joined:<p class="signup-date"> {{dateFormat signupDate "dddd, MMMM Do YYYY"}}</p>
       </div>
-      <div>
+      <div class="modals">
       <!-- Trigger/Open Password Modal -->
-          <button id="pwdBtn">Change password</button>
-
+      <div class="profilebtns">
+          <button id="pwdBtn" >Change password</button>
+          <button id="delBtn" >Delete account</button>
+    </div>
           <!-- The Modal -->
           <div id="pwdModal" class="modal">
             <!-- Modal content -->
@@ -48,7 +50,7 @@
       <div>
 
         <!-- Trigger/Open The Deletion Modal -->
-          <button id="delBtn">Delete account</button>
+
 
           <!-- The Modal -->
           <div id="delModal" class="modal">
@@ -69,8 +71,8 @@
       <div class="cal-header">
         <div class="cal-month"></div>
         <div>
-          <button onclick="createCal(currentYear, --currentMonth)">&#60;</button>
-          <button onclick="createCal(currentYear, ++currentMonth)">&#62;</button>
+          <button class="browse" onclick="calGenerator(currentYear, --currentMonth)">&#60;</button>
+          <button class="browse" onclick="calGenerator(currentYear, ++currentMonth)">&#62;</button>
         </div>
       </div>
       <div class="cal-table"></div>
@@ -81,4 +83,4 @@
 </div>
 
 <script src="../js/entries.js"></script>
-<script src="../js/profile.js"></script>
+<script src="../js/modals.js"></script>
