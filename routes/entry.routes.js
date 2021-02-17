@@ -79,6 +79,10 @@ router.get('/entries/:yyyy/:mm/:dd', checkAuth, (req, res) => {
   Entry.find({ time: query, authorId: user._id })
     .populate('authorId', 'username')
     .then(results => {
+      for (let entry of results) {
+        entry.entryBody = getPreview(0, entry.entryBody);
+      }
+
       sortByDate(results)
       res.render('user/entries-by-date', { results, user, query: `${dd}/${mm}/${yyyy}` })
     })
@@ -245,7 +249,10 @@ router.post('/search', checkAuth, (req, res) => {
     .then(results => {
       // filtering by entryType (my or all)
       if (entryType === "my") {
-        results = results.filter(entry => entry.authorId.toString() === user._id.toString());
+        results = results.filter(entry => {
+          console.log(entry.authorId);
+          return entry.authorId._id.toString() === user._id.toString()
+        });
       }
 
       for (let entry of results) {
