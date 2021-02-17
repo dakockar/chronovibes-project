@@ -129,6 +129,7 @@ router.get('/entries/search/:tag', checkAuth, (req, res) => {
     // authorId: user._id,
     tags: new RegExp(queryStr, 'i')
   })
+    .populate('authorId', 'username')
     .then(results => {
       // shows my entries + all public entries
 
@@ -149,7 +150,8 @@ router.get('/author/search/:author', checkAuth, (req, res) => {
 
   User.findOne({ username: queryStr })
     .then(author => {
-      Entry.find({ authorId: author._id, isPublic: true })
+      Entry.find({ authorId: author._id, $or: [{ isPublic: true}, { authorId: user._id } ] })
+        .populate('authorId', 'username')
         .then(results => {
           res.render('user/tag-results', { queryStr, results, user, author: results.authorId })
         })
@@ -234,6 +236,7 @@ router.post('/search', checkAuth, (req, res) => {
     {
       $or: [{ entryBody: new RegExp(queryStr, 'i') }, { title: new RegExp(queryStr, 'i') }]
     })
+    .populate('authorId', 'username')
     .then(results => {
       // filtering by entryType (my or all)
       if (entryType === "my") {
@@ -243,6 +246,7 @@ router.post('/search', checkAuth, (req, res) => {
       for (let entry of results) {
         let index = entry.entryBody.indexOf(queryStr);
         entry.entryBody = getPreview(index, entry.entryBody);
+        console.log(entry)
       }
       sortByDate(results)
       res.render('user/results', { results, user, queryStr })
