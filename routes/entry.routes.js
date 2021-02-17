@@ -5,6 +5,7 @@ const Entry = require('../models/Entry.model.js');
 const User = require('../models/User.model.js');
 // const checkAuth = require('./auth.routes.js')
 
+
 // TODO : check why importing checkAuth doesn't work
 const checkAuth = (req, res, next) => {
   if (req.session.loggedInUser) {
@@ -13,6 +14,15 @@ const checkAuth = (req, res, next) => {
   else {
     res.redirect('/')
   }
+}
+
+// show newest entries first
+const sortByDate = (arr) => {
+  arr.sort((a, b) => {
+    if (a.time < b.time) return 1
+    else if (a.time > b.time) return -1
+    else return 0
+  })
 }
 
 function getPreview(index, str) {
@@ -43,16 +53,11 @@ router.get('/entries', checkAuth, (req, res) => {
   Entry.find({ authorId: user._id })
     .populate('authorId', 'username')
     .then(entries => {
-      entries.sort((a, b) => {     // show newest entries first
-        if (a.time < b.time) return 1
-        else if (a.time > b.time) return -1
-        else return 0
-      })
+      sortByDate(entries)
       // show a preview of entries only 
       for (let entry of entries) {
         entry.entryBody = getPreview(0, entry.entryBody);
       }
-
       res.render('user/entries', { user, entries, tags: entries.tags })
     })
     .catch(err => console.log(err))
@@ -72,23 +77,34 @@ router.get('/entries/:yyyy/:mm/:dd', checkAuth, (req, res) => {
   }
 
   Entry.find({ time: query, authorId: user._id })
+    .populate('authorId', 'username')
     .then(results => {
-      results.sort((a, b) => {
-        if (a.time < b.time) return 1
-        else if (a.time > b.time) return -1
-        else return 0
-      })
+      sortByDate(results)
       res.render('user/entries-by-date', { results, user, query: `${dd}/${mm}/${yyyy}` })
     })
     .catch(err => { console.log(err) })
 })
 
+
+
 router.get('/entries/:id', checkAuth, (req, res) => {
   let id = req.params.id
   let user = req.session.loggedInUser;
+  // find entry by given entry ID
   Entry.findById(id)
     .then(entry => {
-      res.render('user/entrydetails', { entry, user, tags: entry.tags })
+      // find the entry's author
+      User.findById(entry.authorId)
+        .then(result => {
+          // check if author and user ID's match, then display edit btn accordingly
+          if (entry.authorId == user._id) {
+            res.render('user/entrydetails', { entry, user, tags: entry.tags, author: result.username, isAuth: true })
+          }
+          else {
+            res.render('user/entrydetails', { entry, user, tags: entry.tags, author: result.username })
+          }
+        })
+        .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 });
@@ -120,12 +136,28 @@ router.get('/entries/search/:tag', checkAuth, (req, res) => {
         entry.entryBody = getPreview(0, entry.entryBody);
       }
 
-      res.render('user/tag-results', { queryStr, results, user })
+      sortByDate(results);
+      res.render('user/tag-results', { queryStr, results, user, author: results.authorId })
     })
     .catch(err => console.log(err))
 })
 
 
+router.get('/author/search/:author', checkAuth, (req, res) => {
+  let queryStr = req.params.author
+  let user = req.session.loggedInUser;
+
+  User.findOne({ username: queryStr })
+    .then(author => {
+      Entry.find({ authorId: author._id, isPublic: true })
+        .then(results => {
+          res.render('user/results', { queryStr, results, user, author: results.authorId })
+        })
+        .catch(err => console.log(err))
+    })
+    .catch(err => console.log(err))
+
+})
 // POST
 
 router.post('/create', checkAuth, (req, res) => {
@@ -143,7 +175,6 @@ router.post('/create', checkAuth, (req, res) => {
     authorId: user._id,
     isPublic
   };
-  // console.log(newEntry)
 
   Entry.create(newEntry)
     .then(() => {
@@ -213,6 +244,7 @@ router.post('/search', checkAuth, (req, res) => {
         let index = entry.entryBody.indexOf(queryStr);
         entry.entryBody = getPreview(index, entry.entryBody);
       }
+      sortByDate(results)
       res.render('user/results', { results, user, queryStr })
     })
     .catch(err => console.log(err))

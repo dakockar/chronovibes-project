@@ -339,7 +339,10 @@ h1 {
   border-radius: 20px;
 }
 
-
+.entry-author {
+  font-size: 1.2em;
+  color: white;
+}
 .entrybox button {
   border-radius: 4px;
   border: none;
