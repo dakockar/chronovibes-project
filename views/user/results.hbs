@@ -12,7 +12,7 @@
   <div class="entrybox">
 
     <h1><a href="/entries/{{this._id}}">{{this.title}}</a></h1>
-    <div class="entry-date">{{dateFormat this.time "MMMM Do YYYY"}}</div>
+    <div class="entry-date">{{dateFormat this.time "MMMM Do YYYY"}}  by <a href="/author/search/{{this.authorId.username}}"><span class="entry-author">{{this.authorId.username}}</span></a></div>
 
     <div class="entry-body">
       {{splitBefore this.entryBody ../queryStr}}
