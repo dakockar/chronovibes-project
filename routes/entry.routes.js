@@ -38,7 +38,6 @@ router.get('/entries', checkAuth, (req, res) => {
       for (let entry of entries) {
         entry.entryBody = entry.entryBody.substring(0, 180) + "...";
       }
-
       res.render('user/entries', { user, entries, tags: entries.tags })
     })
     .catch(err => console.log(err))
@@ -64,17 +63,26 @@ router.get('/entries/:yyyy/:mm/:dd', checkAuth, (req, res) => {
         else if (a.time > b.time) return -1
         else return 0
       })
-      res.render('user/entries-by-date', { results, user, query: `${dd}/${mm}/${yyyy}` })
+        res.render('user/entries-by-date', { results, user, query: `${dd}/${mm}/${yyyy}`})
+
     })
     .catch(err => { console.log(err) })
 })
 
+
+
 router.get('/entries/:id', checkAuth, (req, res) => {
   let id = req.params.id
   let user = req.session.loggedInUser;
+  // find entry by given entry ID
   Entry.findById(id)
     .then(entry => {
-      res.render('user/entrydetails', { entry, user, tags: entry.tags })
+      // find the entry's author
+      User.findById(entry.authorId)
+      .then(result => {
+        res.render('user/entrydetails', { entry, user, tags: entry.tags, author: result.username })
+      })
+     
     })
     .catch(err => console.log(err))
 });
@@ -101,7 +109,7 @@ router.get('/entries/search/:tag', checkAuth, (req, res) => {
   })
     .then(results => {
 
-      res.render('user/results', { queryStr, results, user })
+      res.render('user/results', { queryStr, results, user, author: results.authorId })
     })
     .catch(err => console.log(err))
 })
