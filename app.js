@@ -21,7 +21,7 @@ hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 // custom helpers
 
 hbs.registerHelper('splitBefore', (str, word) => {
-  return "..." + str.split(word)[0];
+  return str.split(word)[0];
 });
 
 hbs.registerHelper('splitAfter', (str, word) => {
@@ -29,7 +29,7 @@ hbs.registerHelper('splitAfter', (str, word) => {
 
   let i = str.indexOf(word);
 
-  return str.substring(i + word.length) + "...";
+  return str.substring(i + word.length);
 });
 
 // hbs.registerHelper('highlight', (str, word) => {

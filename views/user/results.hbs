@@ -2,6 +2,10 @@
 
 
 <div class="wrapper">
+  {{#if msg}}
+  <p class="message">{{msg}}</p>
+  {{/if}}
+
   {{#if results}}
 
   <h1>results for "{{queryStr}}"</h1>
@@ -13,12 +17,18 @@
     <h1><a href="/entries/{{this._id}}">{{this.title}}</a></h1>
     <div class="entry-date">{{dateFormat this.time "MMMM Do YYYY"}}</div>
 
+    <div class="entry-body">{{this.entryBody}}</div>
 
+
+
+    {{!-- highlight messes with the tag search, so ignoring this for now --}}
+    {{!--
     <div class="entry-body">
       {{splitBefore this.entryBody ../queryStr}}
       <span class="highlighted">{{../queryStr}}</span>
       {{splitAfter this.entryBody ../queryStr}}
     </div>
+    --}}
 
 
 
@@ -30,9 +40,19 @@
     </ul>
     {{/if}}
 
+
+    <span class="isPublic">
+      {{#if this.isPublic}}
+      <span>public</span>
+      {{else}}
+      <span>private</span>
+      {{/if}}
+    </span>
+
   </div>
 
   {{/each}}
+
 
   {{else}}
   <h2>No results for "{{queryStr}}"</h2>
