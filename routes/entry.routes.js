@@ -151,7 +151,7 @@ router.get('/author/search/:author', checkAuth, (req, res) => {
     .then(author => {
       Entry.find({ authorId: author._id, isPublic: true })
         .then(results => {
-          res.render('user/results', { queryStr, results, user, author: results.authorId })
+          res.render('user/tag-results', { queryStr, results, user, author: results.authorId })
         })
         .catch(err => console.log(err))
     })
