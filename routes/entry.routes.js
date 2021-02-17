@@ -106,7 +106,7 @@ router.get('/entries/:id', checkAuth, (req, res) => {
           res.render('user/entrydetails', { entry, user, tags: entry.tags, author: result.username })
         }
       })
-     
+     .catch(err => console.log(err))
     })
     .catch(err => console.log(err))
 });
@@ -155,7 +155,9 @@ router.get('/author/search/:author', checkAuth, (req, res) => {
     .then(results => {
       res.render('user/results', { queryStr, results, user, author: results.authorId })
     })
+    .catch(err =>  console.log(err) )
   })
+  .catch(err => console.log(err))
   
 })
 // POST
