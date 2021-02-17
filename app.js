@@ -28,7 +28,6 @@ hbs.registerHelper('splitAfter', (str, word) => {
   // let i = str.toLowerCase().indexOf(word.toLowerCase());
 
   let i = str.indexOf(word);
-
   return str.substring(i + word.length);
 });
 

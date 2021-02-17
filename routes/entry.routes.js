@@ -16,18 +16,16 @@ const checkAuth = (req, res, next) => {
 }
 
 function getPreview(index, str) {
-
   if (index < 50) {
-    if (str.length < 180) return str;
-    else return str.substring(0, 180) + "...";
+    if (str.length < 200) return str;
+    else return str.substring(0, 200) + "...";
   }
   else {
-    if (str.length < 180) return str;
+    if (str.length < 200) return str;
     else {
-      return "..." + str.substring(index - 50, index + 130) + "...";
+      return "..." + str.substring(index - 50, index + 150) + "...";
     }
   }
-
 }
 
 
@@ -122,7 +120,7 @@ router.get('/entries/search/:tag', checkAuth, (req, res) => {
         entry.entryBody = getPreview(0, entry.entryBody);
       }
 
-      res.render('user/results', { queryStr, results, user })
+      res.render('user/tag-results', { queryStr, results, user })
     })
     .catch(err => console.log(err))
 })

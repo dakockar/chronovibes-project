@@ -2,9 +2,6 @@
 
 
 <div class="wrapper">
-  {{#if msg}}
-  <p class="message">{{msg}}</p>
-  {{/if}}
 
   {{#if results}}
 
@@ -17,18 +14,10 @@
     <h1><a href="/entries/{{this._id}}">{{this.title}}</a></h1>
     <div class="entry-date">{{dateFormat this.time "MMMM Do YYYY"}}</div>
 
-    <div class="entry-body">{{this.entryBody}}</div>
-
-
-
-    {{!-- highlight messes with the tag search, so ignoring this for now --}}
-    {{!--
     <div class="entry-body">
       {{splitBefore this.entryBody ../queryStr}}
-      <span class="highlighted">{{../queryStr}}</span>
-      {{splitAfter this.entryBody ../queryStr}}
+      <span class="highlighted">{{../queryStr}}</span>{{splitAfter this.entryBody ../queryStr}}
     </div>
-    --}}
 
 
 
@@ -55,7 +44,18 @@
 
 
   {{else}}
-  <h2>No results for "{{queryStr}}"</h2>
+
+  <div>
+    {{#if msg}}
+    <p class="message">{{msg}}</p>
+
+    {{else}}
+    <h2>No results for "{{queryStr}}"</h2>
+
+    {{/if}}
+
+  </div>
+
   {{/if}}
 
 </div>

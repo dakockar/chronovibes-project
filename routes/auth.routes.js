@@ -69,7 +69,7 @@ router.get("/home", checkAuth, (req, res, next) => {
         if (user.isMoodChosen) {
           spotifyApi.searchPlaylists(user.mood)
             .then((data) => {
-              let playlists = data.body.playlists.items;
+              let playlists = data.body.playlists.items.splice(0, 5);
               res.render("user/home-mood-chosen.hbs", { user, playlists });
             })
             .catch((err) => {
