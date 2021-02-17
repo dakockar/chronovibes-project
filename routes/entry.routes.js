@@ -150,9 +150,14 @@ router.get('/author/search/:author', checkAuth, (req, res) => {
 
   User.findOne({ username: queryStr })
     .then(author => {
-      Entry.find({ authorId: author._id, $or: [{ isPublic: true}, { authorId: user._id } ] })
+      Entry.find({ authorId: author._id, $or: [{ isPublic: true }, { authorId: user._id }] })
         .populate('authorId', 'username')
         .then(results => {
+          for (let entry of results) {
+            entry.entryBody = getPreview(0, entry.entryBody);
+          }
+
+          sortByDate(results);
           res.render('user/tag-results', { queryStr, results, user, author: results.authorId })
         })
         .catch(err => console.log(err))
