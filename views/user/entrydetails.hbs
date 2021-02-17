@@ -21,8 +21,8 @@
         </ul>
       {{/if}}
    
-
-      <div class="btns">
+    {{#if isAuth}}
+      <div class="btns">   
         <a href="/entries/edit/{{entry._id}}">
           <button type="button">edit</button>
         </a>
@@ -30,6 +30,7 @@
           <button id="delEntry">delete</button>
         </div>
       </div>
+      {{/if}}
     </div>
      </div>
       <div id="delEntryModal" class="modal">

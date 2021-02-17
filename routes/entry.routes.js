@@ -96,7 +96,13 @@ router.get('/entries/:id', checkAuth, (req, res) => {
       // find the entry's author
       User.findById(entry.authorId)
       .then(result => {
-        res.render('user/entrydetails', { entry, user, tags: entry.tags, author: result.username })
+        // check if author and user ID's match, then display edit btn accordingly
+        if (entry.authorId == user._id) {
+          res.render('user/entrydetails', {  entry, user, tags: entry.tags, author: result.username, isAuth: true })
+        }
+        else {
+          res.render('user/entrydetails', { entry, user, tags: entry.tags, author: result.username })
+        }
       })
      
     })
