@@ -1,28 +1,35 @@
 {{> navbarPartial this}}
 <div class="write-form">
 
-  <div class="wrapper">
-    <h2>Write entry</h2>
+  <div class="entry-page">
     <div class="error">{{msg}}</div>
     <div class="entrybox">
+      <h2>Write entry</h2>
       <form action="/create" method="POST">
-        <div class="mb-3">
+        <div class="form-item mb-3">
           <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" id="title" name="title" required>
+          <input type="text" class="input-area" id="title" name="title" placeholder="title"
+            onfocus="this.placeholder = ''"
+            onblur="this.placeholder = 'title'" required>
         </div>
-        <div class="mb-3">
+        <div class="form-item mb-3">
           <label for="entry-body" class="form-label">Write something</label>
-          <textarea class="form-control" id="entry-body" name="entryBody" rows="4" required></textarea>
+          <textarea class="input-area" id="entry-body" name="entryBody" rows="15" placeholder="what is on your mind?"
+            onfocus="this.placeholder = ''"
+            onblur="this.placeholder = 'what is on your mind?'"
+            required></textarea>
         </div>
-        <div class="mb-3">
+        <div class="form-item mb-3">
           <label for="tags" class="form-label">Tags</label>
-          <input type="text" class="form-control" id="tags" name="tags">
+          <input type="text" class="input-area" id="tags" name="tags" placeholder="birds, bees"
+            onfocus="this.placeholder = ''"
+            onblur="this.placeholder = 'birds, bees'">
         </div>
-        <div class="mb-3">
+        <div class="form-item mb-3">
           <label for="public" class="form-label">Public post</label>
           <input type="checkbox" id="public" name="public">
         </div>
-        <button type="submit" class="write-btn">Submit</button>
+        <button type="submit" class="form-item write-btn">Submit</button>
       </form>
 
     </div>

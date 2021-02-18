@@ -1,33 +1,39 @@
 {{> navbarPartial this}}
 
-<div class="wrapper">
-  <span id="greeting" class="greet"> </span><span class="username greet">{{user.username}}</span>
+<span id="greeting" class="greet"> </span><span class="greet">{{user.username}}</span>
 
-  <div id="quote" class="disappear"></div>
+<div id="quote" class="disappear"></div>
 
+
+<div class="mood-wrapper">
+
+  <div class="chosen-mood mood-bg disappear">
+    <p>mood:</p>
+    <img src="images/{{user.mood}}.png" alt="" height="40">
+  </div>
+
+
+  <div class="playlist disappear">
+    <p>maybe you wanna try one of these playlists:</p>
+    <ul>
+      {{#each playlists}}
+      <a target="_blank" href="{{this.external_urls.spotify}}">
+        <li>
+          <p>
+            {{this.name}}
+          </p>
+          <p>
+            <img class="playlist" src="{{this.images.0.url}}" alt="">
+          </p>
+        </li>
+      </a>
+      {{/each}}
+    </ul>
+  </div>
 </div>
 
-<div class="chosen-mood mood-bg disappear">
-  <p>Your mood: </p>
-  <p>{{user.mood}}</p>
-</div>
 
 
-<div class="playlist wrapper disappear">
-  <p>maybe you wanna try one of these playlists:</p>
-  <ul>
-    {{#each playlists}}
-    <li>
-      <p>
-        <a target="_blank" href="{{this.external_urls.spotify}}">{{this.name}}</a>
-      </p>
-      <p>
-        <img class="playlist" src="{{this.images.0.url}}" alt="">
-      </p>
-    </li>
-    {{/each}}
-  </ul>
-</div>
 
 
 <script src="../js/home.js"></script>

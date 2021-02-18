@@ -84,7 +84,7 @@ function monthName(num) {
 
 
 function calGenerator(bool) {
-    if(bool) {
+    if (bool) {
         --currentMonth
     }
     else ++currentMonth

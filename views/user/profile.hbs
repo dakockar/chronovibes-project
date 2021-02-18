@@ -3,74 +3,69 @@
 {{> navbarPartial this}}
 
 
-<div class="wrapper">
 
-  <div class="message">{{msg}}</div>
-  <div class="profilebox">
+<div class="message">{{msg}}</div>
+<div class="profilebox">
 
-    <div class="userinfo">
-      <h1>{{user.username}}</h1>
-      <div>Joined:<p class="signup-date"> {{dateFormat signupDate "MMMM Do YYYY"}}</p>
-      </div>
-      <div class="modals">
-        <!-- Trigger/Open Modals -->
-        <div class="profilebtns">
-          <button id="pwdBtn">Change password</button>
-          <button id="delBtn">Delete account</button>
-        </div>
-        <!-- Password change Modal -->
-        <div id="pwdModal" class="modal">
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>
-            <h2>Change password</h2>
-            <form action="/change-password" method="POST">
-              <div class="mb-3">
-                <label for="current" class="form-label">current password</label>
-                <input type="password" class="form-control" id="current" name="currPwd" required>
-              </div>
-              <div class="mb-3">
-                <label for="newPwd" class="form-label">new password</label>
-                <input type="password" pattern="(?=.*\d)(?=.*[a-z]).{5,}" class="form-control" id="newPwd" name="newPwd"
-                  title="Must contain at least one number and one uppercase and lowercase letter, and at least 5  characters"
-                  required>
-              </div>
-              <div class="mb-3">
-                <label for="newPwd2" class="form-label">confirm new password</label>
-                <input type="password" pattern="(?=.*\d)(?=.*[a-z]).{5,}" class="form-control" id="newPwd2"
-                  name="newPwd2"
-                  title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 characters"
-                  required>
-              </div>
-              <button type="submit">Change password</button>
-            </form>
-            </p>
-          </div>
-        </div>
-        {{!-- End of modal --}}
-      </div>
-
-      <div>
-        <!-- Deletion Modal -->
-        <div id="delModal" class="modal">
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>
-            <p>Are you sure you want to delete your account?</p>
-            <form action="/delete-user" method="POST"><button>Yes, please</button></form>
-            </p>
-          </div>
-        </div>
-
-      </div>
+  <div class="userinfo">
+    <h1>{{user.username}}</h1>
+    <div class="joined">Joined:<p class="signup-date"> {{dateFormat signupDate "MMMM Do YYYY"}}</p>
     </div>
-      {{> calendarPartial this}}
+    <div class="modals">
+      <!-- Trigger/Open Modals -->
+      <div class="profilebtns">
+        <button id="pwdBtn">Change password</button>
+        <button id="delBtn">Delete account</button>
+      </div>
+      <!-- Password change Modal -->
+      <div id="pwdModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>
+          <h2>Change password</h2>
+          <form action="/change-password" method="POST">
+            <div class="mb-3">
+              <label for="current" class="form-label">current password</label>
+              <input type="password" class="form-control" id="current" name="currPwd" required>
+            </div>
+            <div class="mb-3">
+              <label for="newPwd" class="form-label">new password</label>
+              <input type="password" pattern="(?=.*\d)(?=.*[a-z]).{5,}" class="form-control" id="newPwd" name="newPwd"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 5  characters"
+                required>
+            </div>
+            <div class="mb-3">
+              <label for="newPwd2" class="form-label">confirm new password</label>
+              <input type="password" pattern="(?=.*\d)(?=.*[a-z]).{5,}" class="form-control" id="newPwd2"
+                name="newPwd2"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 characters"
+                required>
+            </div>
+            <button type="submit">Change password</button>
+          </form>
+          </p>
+        </div>
+      </div>
+      {{!-- End of modal --}}
+    </div>
+
+    <div>
+      <!-- Deletion Modal -->
+      <div id="delModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>
+          <p>Are you sure you want to delete your account?</p>
+          <form action="/delete-user" method="POST"><button>Yes, please</button></form>
+          </p>
+        </div>
+      </div>
+
+    </div>
   </div>
-
-
+  {{> calendarPartial this}}
 </div>
 
-</div>
 
 <script src="../js/calendar.js"></script>
 <script src="../js/modals.js"></script>

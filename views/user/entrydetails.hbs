@@ -1,72 +1,71 @@
-   <link rel="stylesheet" href="/stylesheets/modals.css" />
+<link rel="stylesheet" href="/stylesheets/modals.css" />
 
 {{> navbarPartial this}}
-<div class="single-entry">
-  <div class="wrapper">
+<div class="entry-page">
 
-    <a href="/entries">« entries</a>
+  {{!--
+  <a href="/entries">« entries</a> --}}
 
-    <div class="entrybox">
-      
-      <h1>{{entry.title}}</h1>
-      <div class="entry-author">by <a href="/author/search/{{author}}">{{author}}</a></div>
-      <div class="entry-date">{{dateFormat entry.time "dddd, MMMM Do YYYY, h:mm:ss a"}}</div>
-      <div class="entry-body">{{entry.entryBody}}</div>
-      
-      {{#if entry.tags}}
-        <ul>
-        {{#each tags}}
-          <li><a href="/entries/search/{{this}}">#{{this}}</a></li>
-        {{/each}}
-        </ul>
-      {{/if}}
-   
+
+  <div class="entrybox">
+
+    <h1>{{entry.title}}</h1>
+    <div class="entry-author">by <a href="/author/search/{{author}}">{{author}}</a></div>
+    <div class="entry-date">{{dateFormat entry.time "dddd, MMMM Do YYYY, h:mm:ss a"}}</div>
+    <div class="entry-body">{{entry.entryBody}}</div>
+
+    {{#if entry.tags}}
+    <ul>
+      {{#each tags}}
+      <li><a href="/entries/search/{{this}}">#{{this}}</a></li>
+      {{/each}}
+    </ul>
+    {{/if}}
+
     {{#if isAuth}}
-      <div class="btns">   
-        <a href="/entries/edit/{{entry._id}}">
-          <button type="button">edit</button>
-        </a>
-        <div>
-          <button id="delEntry">delete</button>
-        </div>
+    <div class="entry-btn-container">
+      <a href="/entries/edit/{{entry._id}}">
+        <button type="button">edit</button>
+      </a>
+      <div>
+        <button id="delEntry">delete</button>
       </div>
-      {{/if}}
     </div>
-     </div>
-      <div id="delEntryModal" class="modal">
-        <div class="modal-content">
-          <span id="closeEntry">&times;</span>
-            <p>
-              <p>Delete entry permanently?</p>
-              <form action="/entries/delete/{{entry._id}}" method="POST"><button>Delete</button></form>
-              </p>
-            </div>
-
-          </div>
+    {{/if}}
+  </div>
+</div>
+<div id="delEntryModal" class="modal">
+  <div class="modal-content">
+    <span id="closeEntry">&times;</span>
+    <p>
+    <p>Delete entry permanently?</p>
+    <form action="/entries/delete/{{entry._id}}" method="POST"><button>Delete</button></form>
+    </p>
   </div>
 
-  
 </div>
-      
+
+</div>
+
 <script>
 
   let delEntryModal = document.getElementById("delEntryModal")
   let delEntry = document.getElementById("delEntry");
   let delEntrySpan = document.getElementById("closeEntry")
-  
-  delEntry.onclick = function() {
+
+  delEntry.onclick = function () {
     delEntryModal.style.display = "block";
   }
-  
-  delEntrySpan.onclick = function() {
+
+  delEntrySpan.onclick = function () {
     delEntryModal.style.display = "none";
   }
 
-  window.onclick = function(event) {
+  window.onclick = function (event) {
     if (event.target == delEntryModal) {
       delEntryModal.style.display = "none"
     }
   }
-  
+
 
 </script>

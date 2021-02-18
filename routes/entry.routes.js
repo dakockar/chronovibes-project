@@ -119,6 +119,7 @@ router.get('/entries/edit/:id', checkAuth, (req, res, next) => {
   let user = req.session.loggedInUser;
   Entry.findById(id)
     .then(entry => {
+      entry.tags = entry.tags.join(", ");
       res.render('user/edit-form', { entry, user })
     })
     .catch(err => console.log(err))
@@ -162,7 +163,7 @@ router.get('/author/search/:author', checkAuth, (req, res) => {
           }
 
           sortByDate(results);
-          res.render('user/tag-results', { queryStr, results, user, author: results.authorId })
+          res.render('user/author-results', { queryStr, results, user, author: results.authorId })
         })
         .catch(err => console.log(err))
     })
@@ -205,8 +206,8 @@ router.post('/entries/edit/:id', checkAuth, (req, res, next) => {
   const { title, entryBody, tags } = req.body;
   let tagsArr = tags.length > 0 ? tags.split(', ') : []
   let editedEntry = {
-    title: title,
-    entryBody: entryBody,
+    title,
+    entryBody,
     tags: tagsArr
   };
 

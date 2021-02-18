@@ -1,20 +1,17 @@
-
 {{> navbarPartial this}}
-<div class="entries-page">
+<div class="entry-page">
 
-  <div class="entrywrapper">
-    <h2>Entries from {{query}}</h2>
-    {{#if results}}
-    {{#each results}}
-    
-     {{> entryPartial this}}
-    
-    {{/each}}
-    {{else}}
-    <div id="empty">No entries were made on this day. Kitten here though
-    </div>
-    <div class="placeholder"> <img src="https://placekitten.com/300/300"></div>
-    {{/if}}
+  <h2>Entries from {{query}}</h2>
+  {{#if results}}
+  {{#each results}}
 
+  {{> entryPartial this}}
+
+  {{/each}}
+  {{else}}
+  <div id="empty">No entries were made on this day. Kitten here though
   </div>
+  <div class="placeholder"> <img src="https://placekitten.com/300/300"></div>
+  {{/if}}
+
 </div>

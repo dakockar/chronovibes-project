@@ -69,7 +69,12 @@ router.get("/home", checkAuth, (req, res, next) => {
         if (user.isMoodChosen) {
           spotifyApi.searchPlaylists(user.mood)
             .then((data) => {
-              let playlists = data.body.playlists.items.splice(0, 5);
+              let playlists = data.body.playlists.items.splice(0, 6);
+              for (let elem of playlists) {
+                if (elem.name.length > 20) {
+                  elem.name = elem.name.substring(0, 20) + "...";
+                }
+              }
               res.render("user/home-mood-chosen.hbs", { user, playlists });
             })
             .catch((err) => {
@@ -171,7 +176,7 @@ router.post("/mood", (req, res, next) => {
           .catch((err) => {
             console.log("user update failed: ", err);
           });
-      }, 10000);
+      }, 1000000);
 
       res.redirect("/home");
     })
@@ -185,7 +190,7 @@ router.post('/change-password', (req, res) => {
   const { newPwd, newPwd2, currPwd } = req.body
 
   if (newPwd !== newPwd2) {
-    res.render('profile', { user, msg: 'passwords do not match, please try again' })
+    res.render('user/profile', { user, msg: 'passwords do not match, please try again' })
     return
   }
 

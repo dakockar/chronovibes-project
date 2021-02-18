@@ -1,18 +1,14 @@
-
 {{> navbarPartial this}}
-<div class="entries-page">
+<div class="entry-page">
 
-  <div class="entrywrapper">
+  {{#if entries}}
+  {{#each entries}}
 
-    {{#if entries}}
-    {{#each entries}}
+  {{> entryPartial this}}
 
-    {{> entryPartial this}}
+  {{/each}}
+  {{else}}
+  <div id="empty">No entries</div>
+  {{/if}}
 
-    {{/each}}
-    {{else}}
-    <div id="empty">No entries</div>
-    {{/if}}
-
-  </div>
 </div>

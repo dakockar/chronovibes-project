@@ -1,23 +1,25 @@
-
 {{> navbarPartial this}}
 
-<div class="wrapper">
+<div class="entry-page">
 
-<div class="entrybox">
+  <div class="entrybox">
     <form action="/entries/edit/{{entry._id}}" method="POST">
-      <div class="mb-3">
+      <div class="form-item mb-3">
         <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title" name="title" value="{{entry.title}}" required>
+        <input type="text" class="input-area" id="title" name="title" value="{{entry.title}}" required>
       </div>
-      <div class="mb-3">
+      <div class="form-item mb-3">
         <label for="entry-body" class="form-label">Write an entry or sth</label>
-        <textarea class="form-control" id="entry-body" name="entryBody" rows="4" required>{{entry.entryBody}}</textarea>
+        <textarea class="input-area" id="entry-body" name="entryBody" rows="15" required>{{entry.entryBody}}</textarea>
       </div>
-      <div class="mb-3">
+      <div class="form-item mb-3">
         <label for="tags" class="form-label">Tags</label>
-        <input type="text" class="form-control" id="tags" name="tags" value="{{entry.tags}}">
+        <input type="text" class="input-area" id="tags" name="tags" value="{{entry.tags}}">
       </div>
-      <button type="submit">Edit</button>
+      <button class="form-item write-btn" type="submit">Save</button>
+      <a href="/entries/{{entry._id}}">
+        <button class="form-item write-btn" type="button">Cancel</button>
+      </a>
     </form>
-</div>
+  </div>
 </div>
