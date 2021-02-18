@@ -143,8 +143,6 @@ ul {
   color: rgb(190, 190, 190);
 }
 
-
-
 #quote {
   padding: 1.5em;
   color: rgb(151, 151, 151);
@@ -241,6 +239,7 @@ ul {
 
 .playlist li {
   width: 180px;
+  height: 170px;
   margin: 15px 5px;
   padding: 2px 5px;
   display: flex;
@@ -264,6 +263,7 @@ ul {
 
 .playlist img {
   width: 100px;
+  max-height: 100px;
 }
 
 .disappear {
