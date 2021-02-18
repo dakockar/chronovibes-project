@@ -84,7 +84,6 @@ ul {
   font-family: 'Raleway';
   letter-spacing: .1em;
   font-weight: bold;
-  margin-bottom: 40px;
 }
 
 #small-logo {
@@ -135,14 +134,16 @@ ul {
 
 /* ---------------- */
 
+.greeting-wrapper {
+  margin: 80px 20% 0;
+}
+
 .greet {
   font-size: 2em;
   color: rgb(190, 190, 190);
 }
 
-#greeting {
-  margin-left: 20%;
-}
+
 
 #quote {
   padding: 1.5em;

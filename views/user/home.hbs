@@ -8,10 +8,9 @@
 </nav>
 
 
-
-<span id="greeting" class="greet"></span><span class="greet">{{user.username}}</span>
-
-<div id="quote" class="disappear"></div>
+<div class="greeting-wrapper">
+  <span id="greeting" class="greet"></span><span class="greet">{{user.username}}</span>
+</div>
 
 
 
@@ -42,7 +41,6 @@
 
   document.onload =
     setTimeout(() => {
-      document.querySelector('#quote').classList.remove('disappear');
       document.querySelector('.mood-query').classList.remove('disappear');
     }, 400);
 </script>

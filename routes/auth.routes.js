@@ -166,7 +166,6 @@ router.post("/mood", (req, res, next) => {
     .then((user) => {
       console.log("user is updated");
 
-      // isMoodChosen is automatically set to false after 10 secs (for testing)
       // TODO: in the final product, we'll set it to false at the end of the day
       setTimeout(() => {
         User.findOneAndUpdate({ username: user.username }, { isMoodChosen: false })
@@ -176,7 +175,7 @@ router.post("/mood", (req, res, next) => {
           .catch((err) => {
             console.log("user update failed: ", err);
           });
-      }, 1000000);
+      }, 3600000);  // 1 hour cooldown
 
       res.redirect("/home");
     })
