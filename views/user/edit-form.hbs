@@ -3,6 +3,7 @@
 <div class="entry-page">
 
   <div class="entrybox">
+    <h2>Edit entry</h2>
     <form action="/entries/edit/{{entry._id}}" method="POST">
       <div class="form-item mb-3">
         <label for="title" class="form-label">Title</label>
@@ -16,9 +17,9 @@
         <label for="tags" class="form-label">Tags</label>
         <input type="text" class="input-area" id="tags" name="tags" value="{{entry.tags}}">
       </div>
-      <button class="form-item write-btn" type="submit">Save</button>
+      <button class="form-item" type="submit">Save</button>
       <a href="/entries/{{entry._id}}">
-        <button class="form-item write-btn" type="button">Cancel</button>
+        <button class="form-item" type="button">Cancel</button>
       </a>
     </form>
   </div>

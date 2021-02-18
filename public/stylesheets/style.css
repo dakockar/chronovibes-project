@@ -16,14 +16,12 @@ body {
 }
 
 a {
-  /* color: #8badbb; */
   text-decoration: none;
 }
 
 ul {
   list-style-type: none;
 }
-
 
 .error {
   color: white;
@@ -43,7 +41,6 @@ ul {
   align-items: center;
   background: rgba(20, 20, 20, .3);
 }
-
 
 .form-container {
   width: 500px;
@@ -75,21 +72,6 @@ ul {
   letter-spacing: .2em;
 
 }
-
-/* #login-tab {
-  color: white;
-}
-
-#signup-tab {
-  color: white;
-} */
-
-
-/* .form-control {} */
-
-
-
-
 
 /* -------------------------------------- */
 
@@ -167,7 +149,6 @@ ul {
   color: rgb(151, 151, 151);
   letter-spacing: .1em;
   margin-left: 20%;
-
   transition: all 0.8s ease-in-out;
 }
 
@@ -258,7 +239,6 @@ ul {
 }
 
 .playlist li {
-  /* list-style-type: none; */
   width: 180px;
   margin: 15px 5px;
   padding: 2px 5px;
@@ -302,7 +282,6 @@ ul {
   flex-direction: column;
   align-items: center;
   padding: 40px;
-  /* max-height: 100vh; */
 }
 
 .entry-page a {
@@ -390,6 +369,7 @@ ul {
 
 .input-area {
   background: rgba(185, 184, 219, 0.952);
+  color: rgb(40, 40, 40);
   border-radius: 5px;
   border-style: solid;
   display: block;
@@ -398,7 +378,6 @@ ul {
 }
 
 .input-area:focus {
-  /* border-style: none; */
   outline: none;
 }
 

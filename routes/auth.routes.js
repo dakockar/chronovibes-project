@@ -71,8 +71,8 @@ router.get("/home", checkAuth, (req, res, next) => {
             .then((data) => {
               let playlists = data.body.playlists.items.splice(0, 6);
               for (let elem of playlists) {
-                if (elem.name.length > 20) {
-                  elem.name = elem.name.substring(0, 20) + "...";
+                if (elem.name.length >= 18) {
+                  elem.name = elem.name.substring(0, 18) + "...";
                 }
               }
               res.render("user/home-mood-chosen.hbs", { user, playlists });
