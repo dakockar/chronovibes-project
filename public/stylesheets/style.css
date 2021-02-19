@@ -135,6 +135,7 @@ ul {
 /* ---------------- */
 
 .greeting-wrapper {
+  /* width: 90%; */
   margin: 80px 20% 0;
 }
 
@@ -147,7 +148,7 @@ ul {
   padding: 1.5em;
   color: rgb(151, 151, 151);
   letter-spacing: .1em;
-  margin-left: 20%;
+  margin: 0 20%;
   transition: all 0.8s ease-in-out;
 }
 
@@ -299,6 +300,8 @@ ul {
   color: white;
   opacity: .6;
   align-self: flex-start;
+  margin: 30px 20%;
+
 }
 
 .entrybox {
@@ -537,4 +540,21 @@ td {
 
 td:hover {
   transform: scale(1.2);
+}
+
+
+/* calendar search */
+
+#empty {
+  font-size: 1.5em;
+  margin: 50px auto;
+  text-align: center;
+  color: rgba(216, 216, 216, 0.6)
+}
+
+.placeholder img {
+  width: 600px;
+  opacity: 1;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
 }
