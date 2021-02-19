@@ -300,8 +300,7 @@ ul {
   color: white;
   opacity: .6;
   align-self: flex-start;
-  margin: 30px 20%;
-
+  margin: 20px 20%;
 }
 
 .entrybox {
@@ -317,6 +316,13 @@ ul {
   border-radius: 20px;
   width: 50%;
   min-width: 500px;
+}
+
+.entrybox h2 {
+  color: white;
+  opacity: .6;
+  align-self: flex-start;
+  margin: 0;
 }
 
 .entry-date {
